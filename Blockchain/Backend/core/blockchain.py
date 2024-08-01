@@ -49,6 +49,9 @@ class Blockchain:
         timestamp = int(time.time())
         coinbaseInstance = CoinbaseTx(BlockHeight)
         coinbaseTx = coinbaseInstance.CoinbaseTransaction()
+
+        self.TxIds.insert(0, coinbaseTx.TxId)
+        self.addTransactionsInBlock.insert(0, coinbaseTx)
         
         merkleRoot = coinbaseTx.TxId
         bits = 'ffff001f'
