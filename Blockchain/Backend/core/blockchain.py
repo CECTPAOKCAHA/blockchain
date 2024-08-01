@@ -36,6 +36,15 @@ class Blockchain:
     def store_utxos_in_cache(self, Transaction):
         self.utxos[Transaction.TxId] = Transaction
 
+    """Read Transactions from Memory Pool"""
+    def read_transaction_from_memorypool(self):
+        self.TxIds = []
+        self.addTransactionsInBlock = []
+
+        for tx in self.MemPool:
+            self.TxIds.append(tx)
+            self.addTransactionsInBlock.append(self.MemPool[tx])
+
     def addBlock(self, BlockHeight, prevBlockHash):
         timestamp = int(time.time())
         coinbaseInstance = CoinbaseTx(BlockHeight)
