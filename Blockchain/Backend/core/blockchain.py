@@ -52,6 +52,7 @@ class Blockchain:
             self.TxJson.append(tx.to_dict())
 
     def addBlock(self, BlockHeight, prevBlockHash):
+        self.read_transaction_from_memorypool()
         timestamp = int(time.time())
         coinbaseInstance = CoinbaseTx(BlockHeight)
         coinbaseTx = coinbaseInstance.CoinbaseTransaction()
