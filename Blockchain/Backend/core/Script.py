@@ -41,10 +41,10 @@ class Script:
                     raise ValueError('too long an cmd')
                 
                 result += cmd
-            # get the length of the whole thing
-            total = len(result)
-            # encode_varint the total length of the result and prepend
-            return encode_varint(total) + result
+        # get the length of the whole thing
+        total = len(result)
+        # encode_varint the total length of the result and prepend
+        return encode_varint(total) + result
 
     def evaluate(self, z):
         cmds = self.cmds[:]

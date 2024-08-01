@@ -46,11 +46,11 @@ class SendBTC:
             if self.Total < self.Amount:
                 txObj = newutxos[Txbyte]
 
-            for index, txout in enumerate(txObj.tx_outs):
-                if txout.script_pubkey.cmds[2] == self.fromPubKeyHash:
-                    self.Total += txout.amount
-                    prev_tx = bytes.fromhex(Txbyte)
-                    TxIns.append(TxIn(prev_tx, index))
+                for index, txout in enumerate(txObj.tx_outs):
+                    if txout.script_pubkey.cmds[2] == self.fromPubKeyHash:
+                        self.Total += txout.amount
+                        prev_tx = bytes.fromhex(Txbyte)
+                        TxIns.append(TxIn(prev_tx, index))
 
             else:
                 break
