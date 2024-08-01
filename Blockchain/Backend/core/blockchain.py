@@ -45,6 +45,12 @@ class Blockchain:
             self.TxIds.append(tx)
             self.addTransactionsInBlock.append(self.MemPool[tx])
 
+    def convert_to_json(self):
+        self.TxJson = []
+
+        for tx in self.addTransactionsInBlock:
+            self.TxJson.append(tx.to_dict())
+
     def addBlock(self, BlockHeight, prevBlockHash):
         timestamp = int(time.time())
         coinbaseInstance = CoinbaseTx(BlockHeight)
@@ -58,8 +64,9 @@ class Blockchain:
         blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, bits)
         blockheader.mine()
         self.store_utxos_in_cache(coinbaseTx)
+        self.convert_to_json()
         print(f"Block {BlockHeight} mined successfully with Nonce value of {blockheader.nonce}")
-        self.write_on_disk([Block(BlockHeight, 1, blockheader.__dict__, 1, coinbaseTx.to_dict()).__dict__])
+        self.write_on_disk([Block(BlockHeight, 1, blockheader.__dict__, 1, self.TxJson).__dict__])
         
 
     def main(self):
