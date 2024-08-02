@@ -6,6 +6,7 @@ from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.util.util import hash256
 from Blockchain.Backend.core.database.database import BlockchainDB
 from Blockchain.Backend.core.Tx import CoinbaseTx
+from Blockchain.Backend.util.util import merkle_root
 from multiprocessing import Process, Manager
 from Blockchain.Frontend.run import main
 import time
@@ -42,7 +43,7 @@ class Blockchain:
         self.addTransactionsInBlock = []
 
         for tx in self.MemPool:
-            self.TxIds.append(tx)
+            self.TxIds.append(bytes.fromhex(tx))
             self.addTransactionsInBlock.append(self.MemPool[tx])
 
     def convert_to_json(self):
@@ -57,10 +58,10 @@ class Blockchain:
         coinbaseInstance = CoinbaseTx(BlockHeight)
         coinbaseTx = coinbaseInstance.CoinbaseTransaction()
 
-        self.TxIds.insert(0, coinbaseTx.TxId)
+        self.TxIds.insert(0, bytes.fromhex(coinbaseTx.TxId))
         self.addTransactionsInBlock.insert(0, coinbaseTx)
         
-        merkleRoot = coinbaseTx.TxId
+        merkleRoot = merkle_root(self.TxIds)[::-1].hex()
         bits = 'ffff001f'
         blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, bits)
         blockheader.mine()
