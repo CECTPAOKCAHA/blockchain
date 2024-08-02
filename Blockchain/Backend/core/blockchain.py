@@ -75,6 +75,13 @@ class Blockchain:
                 self.remove_spent_transactions.append([spent.prev_tx, spent.prev_index])
 
 
+    """ Remove Transactions from Memory pool """
+    def remove_transactions_from_memorypool(self):
+        for tx in self.TxIds:
+            if tx.hex() in self.MemPool:
+                del self.MemPool[tx.hex()]
+
+
     def convert_to_json(self):
         self.TxJson = []
 
@@ -95,6 +102,7 @@ class Blockchain:
         blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, bits)
         blockheader.mine()
         self.remove_spent_Transactions()
+        self.read_transaction_from_memorypool()
         self.store_utxos_in_cache( )
         self.convert_to_json()
         print(f"Block {BlockHeight} mined successfully with Nonce value of {blockheader.nonce}")
