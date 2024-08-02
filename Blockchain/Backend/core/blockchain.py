@@ -34,17 +34,46 @@ class Blockchain:
 
     """Keep track of all the unspent transactions in cache memory for fast retrieval"""
 
-    def store_utxos_in_cache(self, Transaction):
-        self.utxos[Transaction.TxId] = Transaction
+    def store_utxos_in_cache(self):
+        for tx in self.addTransactionsInBlock:
+            print(f"Transaction added {tx.TxId}")
+            self.utxos[tx.TxId] = tx
+
+    def remove_spent_Transactions(self):
+        for txId_index in self.remove_spent_transactions:            
+            if txId_index[0].hex() in self.utxos:
+
+                if len(self.utxos[txId_index[0].hex()].tx_outs) < 2:
+                    print(f" Spent Transaction removed {txId_index[0].hex()} ")
+                    del self.utxos[txId_index[0].hex()]
+                else:
+                    prev_trans = self.utxos[txId_index[0].hex()]
+                    self.utxos[txId_index[0].hex()] = prev_trans.tx_outs.pop(txId_index[1])
+                    
+    """ Check if it is a double spending Attempt """
+    """
+    def doubleSpendingAttempt(self, tx):
+        for txin in tx.tx_ins:
+            if txin.prev_tx not in self.prevTxs and txin.prev_tx.hex() in self.utxos:
+                self.prevTxs.append(txin.prev_tx)
+            else:
+                return True
+    """
+
 
     """Read Transactions from Memory Pool"""
     def read_transaction_from_memorypool(self):
         self.TxIds = []
         self.addTransactionsInBlock = []
+        self.remove_spent_transactions = []
 
         for tx in self.MemPool:
             self.TxIds.append(bytes.fromhex(tx))
             self.addTransactionsInBlock.append(self.MemPool[tx])
+
+            for spent in self.MemPool[tx].tx_ins:
+                self.remove_spent_transactions.append([spent.prev_tx, spent.prev_index])
+
 
     def convert_to_json(self):
         self.TxJson = []
@@ -65,7 +94,8 @@ class Blockchain:
         bits = 'ffff001f'
         blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, bits)
         blockheader.mine()
-        self.store_utxos_in_cache(coinbaseTx)
+        self.remove_spent_Transactions()
+        self.store_utxos_in_cache( )
         self.convert_to_json()
         print(f"Block {BlockHeight} mined successfully with Nonce value of {blockheader.nonce}")
         self.write_on_disk([Block(BlockHeight, 1, blockheader.__dict__, 1, self.TxJson).__dict__])
