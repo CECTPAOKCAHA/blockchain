@@ -3,7 +3,7 @@ sys.path.append('/home/oxana/Desktop/AU/COMP498/blockchain-udemy-adv')
 
 from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
-from Blockchain.Backend.util.util import hash256
+from Blockchain.Backend.util.util import hash256, target_to_bits
 from Blockchain.Backend.core.database.database import BlockchainDB
 from Blockchain.Backend.core.Tx import CoinbaseTx
 from Blockchain.Backend.util.util import merkle_root
@@ -13,11 +13,14 @@ import time
 
 ZERO_HASH = '0' * 64
 VERSION = 1
+INITIAL_TARGET = 0x0000FFFF00000000000000000000000000000000000000000000000000000000
 
 class Blockchain:
     def __init__(self, utxos, MemPool):
         self.utxos = utxos
         self.MemPool = MemPool
+        self.current_target = INITIAL_TARGET
+        self.bits = target_to_bits(INITIAL_TARGET)
 
     def write_on_disk(self, block):
         blockchainDB = BlockchainDB()
@@ -117,9 +120,8 @@ class Blockchain:
         self.addTransactionsInBlock.insert(0, coinbaseTx)
         
         merkleRoot = merkle_root(self.TxIds)[::-1].hex()
-        bits = 'ffff001f'
-        blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, bits)
-        blockheader.mine()
+        blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, self.bits)
+        blockheader.mine(self.current_target)
         self.remove_spent_Transactions()
         self.remove_transactions_from_memorypool()
         self.store_utxos_in_cache( )
@@ -136,7 +138,7 @@ class Blockchain:
             lastBlock = self.fetch_last_block()
             """print(json.dumps(lastBlock, indent=4))"""
             BlockHeight = lastBlock["Height"] + 1
-            prevBlockHash = lastBlock['BlockHeader']['BlockHash']
+            prevBlockHash = lastBlock['BlockHeader']['blockHash']
             self.addBlock(BlockHeight, prevBlockHash)
 
 if __name__ == "__main__":
