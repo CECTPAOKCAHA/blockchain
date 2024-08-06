@@ -5,7 +5,27 @@ from Blockchain.Backend.core.Tx import Tx
 
 app = Flask(__name__)
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/')
+def index():
+    return render_template('home.html')
+
+@app.route('/block')
+def block():
+    return "<h1>Block</h1>"
+
+@app.route('/transactions')
+def transactions():
+    return "<h1>Transactions</h1>"
+
+@app.route('/mempool')
+def mempool():
+    return "<h1>Mempool</h1>"
+
+@app.route('/search')
+def search():
+    return "<h1>Search</h1>"
+
+@app.route('/wallet', methods=["GET", "POST"])
 
 def wallet():
     message = ''
