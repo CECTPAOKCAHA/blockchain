@@ -7,14 +7,39 @@ from Blockchain.Backend.util.util import encode_base58
 from hashlib import sha256
 
 app = Flask(__name__)
+main_prefix = b'\x00'
 
 @app.route('/')
 def index():
     return render_template('home.html')
 
+@app.route('/transactions/<txid>')
 @app.route('/transactions')
-def transactions():
-    return "<h1>Transactions</h1>"
+def transactions(txid = None):
+    if txid:
+        return redirect(url_for('txDetail', txid = txid))
+    else:
+        ErrorFlag = True
+        while ErrorFlag:
+            try:
+                allTxs = dict(UTXOS)
+                ErrorFlag = False
+                return render_template('transactions.html', allTransactions= allTxs, refreshtime = 10)
+            except:
+                ErrorFlag = True
+                return render_template('transactions.html', allTransactions= {}, refreshtime = 10)
+        
+@app.route('/tx/<txid>')
+def txDetail(txid):
+    blocks = readDatabase()
+    for block in blocks:
+        for Tx in block['Txs']:
+            if Tx['TxId'] == txid:
+                return render_template('txDetail.html', Tx=Tx, block = block , encode_base58 = encode_base58,
+                bytes = bytes, sha256 = sha256, main_prefix = main_prefix)
+    return "<h1> No Results Found </h1>"
+
+
 
 @app.route('/mempool')
 def mempool():
@@ -55,9 +80,7 @@ def block():
 def showBlock(blockHeader):
     blocks = readDatabase()
     for block in blocks:
-        if block['BlockHeader']['blockHash'] == blockHeader:
-
-            main_prefix = b'\x00'
+        if block['BlockHeader']['blockHash'] == blockHeader:            
             return render_template('blockDetails.html', block = block, main_prefix = main_prefix, 
             encode_base58 = encode_base58, bytes = bytes, sha256 = sha256)
     
