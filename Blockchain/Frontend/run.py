@@ -2,16 +2,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 from Blockchain.client.sendBTC import SendBTC 
 from Blockchain.Backend.core.Tx import Tx
+from Blockchain.Backend.core.database.database import BlockchainDB
+from Blockchain.Backend.util.util import encode_base58
+from hashlib import sha256
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('home.html')
-
-@app.route('/block')
-def block():
-    return "<h1>Block</h1>"
 
 @app.route('/transactions')
 def transactions():
@@ -21,9 +20,50 @@ def transactions():
 def mempool():
     return "<h1>Mempool</h1>"
 
+@app.route('/address/<publicAddress>')
+def address(publicAddress):
+    return "<h1>Public Adress</h1>"
+
 @app.route('/search')
 def search():
     return "<h1>Search</h1>"
+
+""" Read data from the Blockchain """
+def readDatabase():
+    ErrorFlag = True
+    while ErrorFlag:
+        try:
+            blockchain = BlockchainDB()
+            blocks = blockchain.read()
+            ErrorFlag = False
+        except:
+            ErrorFlag = True
+            print("Error reading database")
+    return blocks
+
+@app.route('/block')
+def block():
+    header = request.args.get('blockHeader')
+    if request.args.get('blockHeader'):
+        return redirect(url_for('showBlock', blockHeader=request.args.get('blockHeader')) )
+    else:
+        blocks = readDatabase()
+        return render_template('block.html', blocks=blocks, refreshtime = 10)
+
+
+@app.route('/block/<blockHeader>')
+def showBlock(blockHeader):
+    blocks = readDatabase()
+    for block in blocks:
+        if block['BlockHeader']['blockHash'] == blockHeader:
+
+            main_prefix = b'\x00'
+            return render_template('blockDetails.html', block = block, main_prefix = main_prefix, 
+            encode_base58 = encode_base58, bytes = bytes, sha256 = sha256)
+    
+    return "<h1> Invalid Identifier </h1>"
+
+
 
 @app.route('/wallet', methods=["GET", "POST"])
 
