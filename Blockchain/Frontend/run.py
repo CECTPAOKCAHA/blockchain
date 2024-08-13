@@ -129,7 +129,14 @@ def address(publicAddress):
 
 @app.route('/search')
 def search():
-    return "<h1>Search</h1>"
+    identifier = request.args.get('search')
+    if len(identifier) == 64:
+        if identifier[:4] == "0000":
+            return redirect(url_for('showBlock', blockHeader = identifier))
+        else:
+            return redirect(url_for('txDetail', txid = identifier))
+    else:
+        return redirect(url_for('address', publicAddress = identifier))
 
 """ Read data from the Blockchain """
 def readDatabase():
