@@ -125,6 +125,7 @@ class Blockchain:
         merkleRoot = merkle_root(self.TxIds)[::-1].hex()
         blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, self.bits)
         blockheader.mine(self.current_target)
+        time.sleep(5) # Add a 5-second delay here
         self.remove_spent_Transactions()
         self.remove_transactions_from_memorypool()
         self.store_utxos_in_cache( )
