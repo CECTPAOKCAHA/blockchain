@@ -9,6 +9,7 @@ from Blockchain.Backend.core.Tx import CoinbaseTx
 from Blockchain.Backend.util.util import merkle_root
 from multiprocessing import Process, Manager
 from Blockchain.Frontend.run import main
+from Blockchain.Backend.core.network.syncManager import syncManager
 import time
 
 ZERO_HASH = '0' * 64
@@ -152,6 +153,12 @@ if __name__ == "__main__":
 
         webapp = Process(target= main, args= (utxos, MemPool))
         webapp.start()
+
+        """ Start Server and Listen for miner requests """
+        sync = syncManager('127.0.0.1', 8888)
+        startServer = Process(target = sync.spinUpTheServer)
+        startServer.start()
+
 
         blockchain = Blockchain(utxos, MemPool)
         blockchain.main()
