@@ -1,10 +1,11 @@
 import sys
 sys.path.append('/home/oxana/Desktop/AU/COMP498/blockchain-udemy-adv')
 
+import configparser
 from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.util.util import hash256, target_to_bits
-from Blockchain.Backend.core.database.database import BlockchainDB
+from Blockchain.Backend.core.database.database import BlockchainDB, NodeDB
 from Blockchain.Backend.core.Tx import CoinbaseTx
 from Blockchain.Backend.util.util import merkle_root
 from multiprocessing import Process, Manager
@@ -35,6 +36,28 @@ class Blockchain:
         BlockHeight = 0
         prevBlockHash = ZERO_HASH
         self.addBlock(BlockHeight, prevBlockHash)
+
+  
+    """ Start the Sync Node """
+    def startSync(self, block = None):
+        try:
+            node = NodeDB()
+            portList = node.read()
+
+            for port in portList:
+                if localHostPort != port:
+                    sync = syncManager(localHost, port, secondryChain = self.secondryChain)
+                    try:
+                        if block:
+                            sync.publishBlock(localHostPort - 1, port, block) 
+                        else:                    
+                            sync.startDownload(localHostPort - 1, port, True)
+                  
+                    except Exception as err:
+                        pass
+                    
+        except Exception as err:
+            pass
 
     """Keep track of all the unspent transactions in cache memory for fast retrieval"""
 
@@ -147,18 +170,25 @@ class Blockchain:
             self.addBlock(BlockHeight, prevBlockHash)
 
 if __name__ == "__main__":
+    """ read configuration file """
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    localHost = config['DEFAULT']['host']
+    localHostPort = int(config['MINER']['port'])
+    webport = int(config['Webhost']['port'])
     with Manager() as manager:
         utxos = manager.dict()
         MemPool = manager.dict()
 
-        webapp = Process(target= main, args= (utxos, MemPool))
+        webapp = Process(target= main, args= (utxos, MemPool, webport))
         webapp.start()
 
         """ Start Server and Listen for miner requests """
-        sync = syncManager('127.0.0.1', 8888)
+        sync = syncManager(localHost, localHostPort)
         startServer = Process(target = sync.spinUpTheServer)
         startServer.start()
 
 
         blockchain = Blockchain(utxos, MemPool)
+        blockchain.startSync()
         blockchain.main()
