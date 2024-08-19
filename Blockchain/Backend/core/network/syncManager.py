@@ -1,5 +1,7 @@
 from Blockchain.Backend.core.network.connection import Node
 from Blockchain.Backend.core.database.database import BlockchainDB
+from Blockchain.Backend.core.network.network import requestBlock
+from threading import Thread
 
 class syncManager:
     # def __init__(self, host, port, newBlockAvailable = None, secondryChain = None, Mempool = None):
@@ -12,13 +14,49 @@ class syncManager:
         self.server.startServer()
         print("SERVER STARTED")
         print(f"[LISTENING] at {self.host}:{self.port}")
-        """
+        
         while True:
             self.conn, self.addr = self.server.acceptConnection()
             handleConn = Thread(target = self.handleConnection)
             handleConn.start()
-        """
 
+    def handleConnection(self):
+        envelope = self.server.read()
+        try:
+            """
+            if len(str(self.addr[1])) == 4:
+                self.addNode()
+            
+            if envelope.command == b'Tx':
+                Transaction = Tx.parse(envelope.stream())
+                Transaction.TxId = Transaction.id()
+                self.Mempool[Transaction.TxId] = Transaction
+
+            if envelope.command == b'block':
+                blockObj = Block.parse(envelope.stream())
+                BlockHeaderObj = BlockHeader(blockObj.BlockHeader.version,
+                            blockObj.BlockHeader.prevBlockHash, 
+                            blockObj.BlockHeader.merkleRoot, 
+                            blockObj.BlockHeader.timestamp,
+                            blockObj.BlockHeader.bits,
+                            blockObj.BlockHeader.nonce)
+                
+                self.newBlockAvailable[BlockHeaderObj.generateBlockHash()] = blockObj
+                print(f"New Block Received : {blockObj.Height}")
+
+                """
+
+            if envelope.command == requestBlock.command:
+                start_block, end_block = requestBlock.parse(envelope.stream())
+                self.sendBlockToRequestor(start_block)
+                print(f"Start Block is {start_block} \n End Block is {end_block}")
+            
+            # self.conn.close()
+
+        except Exception as e:
+            #self.conn.close()
+            print(f" Error while processing the client request \n {e}")
+        
     def startDownload(self,
                   # localport,
                   port,
@@ -33,13 +71,17 @@ class syncManager:
             lastBlockHeader = lastBlock['BlockHeader']['blockHash']
         
         startBlock = bytes.fromhex(lastBlockHeader)
-
-
+        
+        getHeaders = requestBlock(startBlock=startBlock)
+        self.connect = Node(self.host, port)
+        self.socket = self.connect.connect(port)
 
         """
-        getHeaders = requestBlock(startBlock=startBlock)
         self.connectToHost(localport, port, bindPort)
+
+        """
         self.connect.send(getHeaders)
+        """
 
         while True:    
             envelope = NetworkEnvelope.parse(self.stream)
