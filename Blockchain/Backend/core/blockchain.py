@@ -40,24 +40,14 @@ class Blockchain:
   
     """ Start the Sync Node """
     def startSync(self, block = None):
-        try:
-            node = NodeDB()
-            portList = node.read()
+        
+        node = NodeDB()
+        portList = node.read()
 
-            for port in portList:
-                if localHostPort != port:
-                    sync = syncManager(localHost, port, secondryChain = self.secondryChain)
-                    try:
-                        if block:
-                            sync.publishBlock(localHostPort - 1, port, block) 
-                        else:                    
-                            sync.startDownload(localHostPort - 1, port, True)
-                  
-                    except Exception as err:
-                        pass
-                    
-        except Exception as err:
-            pass
+        for port in portList:
+            if localHostPort != port:
+                sync = syncManager(localHost, port)
+                sync.startDownload(port)
 
     """Keep track of all the unspent transactions in cache memory for fast retrieval"""
 

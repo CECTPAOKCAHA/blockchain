@@ -48,7 +48,7 @@ class syncManager:
 
             if envelope.command == requestBlock.command:
                 start_block, end_block = requestBlock.parse(envelope.stream())
-                self.sendBlockToRequestor(start_block)
+                #self.sendBlockToRequestor(start_block)
                 print(f"Start Block is {start_block} \n End Block is {end_block}")
             
             # self.conn.close()
