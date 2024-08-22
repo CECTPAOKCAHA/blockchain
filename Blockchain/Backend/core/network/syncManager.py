@@ -1,6 +1,7 @@
+from Backend.core.block import Block
 from Blockchain.Backend.core.network.connection import Node
 from Blockchain.Backend.core.database.database import BlockchainDB
-from Blockchain.Backend.core.network.network import requestBlock
+from Blockchain.Backend.core.network.network import requestBlock, NetworkEnvelope
 from threading import Thread
 
 class syncManager:
@@ -81,16 +82,20 @@ class syncManager:
 
         """
         self.connect.send(getHeaders)
-        """
+        
 
-        while True:    
+        while True:   
+            self.stream = self.socket.makefile('rb', None) 
             envelope = NetworkEnvelope.parse(self.stream)
+
             if envelope.command == b"Finished":
-                blockObj = FinishedSending.parse(envelope.stream())
+                
+                #blockObj = FinishedSending.parse(envelope.stream())
+
                 print(f"All Blocks Received")
                 self.socket.close()
-                break
-
+                # break
+            """
             if envelope.command == b'portlist':
                 ports = portlist.parse(envelope.stream())
                 nodeDb = NodeDB()
@@ -99,9 +104,11 @@ class syncManager:
                 for port in ports:
                     if port not in portlists:
                         nodeDb.write([port])
-
+            """
+                        
             if envelope.command == b'block':
                 blockObj = Block.parse(envelope.stream())
+                """
                 BlockHeaderObj = BlockHeader(blockObj.BlockHeader.version,
                             blockObj.BlockHeader.prevBlockHash, 
                             blockObj.BlockHeader.merkleRoot, 
@@ -121,7 +128,9 @@ class syncManager:
                     BlockHeaderObj.bits = BlockHeaderObj.bits.hex()
                     blockObj.BlockHeader = BlockHeaderObj
                     BlockchainDB().write([blockObj.to_dict()])
-                    print(f"Block Received - {blockObj.Height}")
+                    """
+                print(f"Block Received - {blockObj.Height}")
+                """
                 else:
                     self.secondryChain[BlockHeaderObj.generateBlockHash()] = blockObj
         """

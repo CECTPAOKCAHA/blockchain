@@ -137,7 +137,7 @@ class Blockchain:
         self.addTransactionsInBlock.insert(0, coinbaseTx)
         
         merkleRoot = merkle_root(self.TxIds)[::-1].hex()
-        blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, self.bits)
+        blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, self.bits, nonce=0)
         blockheader.mine(self.current_target)
         time.sleep(5) # Add a 5-second delay here
         self.remove_spent_Transactions()

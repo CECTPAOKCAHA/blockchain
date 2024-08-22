@@ -1,13 +1,32 @@
 from Blockchain.Backend.util.util import hash256, int_to_little_endian, little_endian_to_int
 class BlockHeader:
-    def __init__(self, version, prevBlockHash, merkleRoot, timestamp, bits):
+    def __init__(self, version, prevBlockHash, merkleRoot, timestamp, bits, nonce=None):
         self.version = version
         self.prevBlockHash = prevBlockHash
         self.merkleRoot = merkleRoot
         self.timestamp = timestamp
         self.bits = bits
-        self.nonce = 0
+        self.nonce = nonce
         self.blockHash = ''
+
+    @classmethod
+    def parse(cls, s):
+        version = little_endian_to_int(s.read(4))
+        prevBlockHash = s.read(32)[::-1]
+        merkleRoot = s.read(32)[::-1]
+        timestamp = little_endian_to_int(s.read(4))
+        bits = s.read(4)
+        nonce = s.read(4)
+        return cls(version, prevBlockHash, merkleRoot, timestamp, bits, nonce)
+
+    def serialize(self):
+        result = int_to_little_endian(self.version, 4)
+        result += self.prevBlockHash[::-1]
+        result += self.merkleRoot[::-1]
+        result += int_to_little_endian(self.timestamp, 4)
+        result += self.bits
+        result += self.nonce
+        return result 
 
     def mine(self, target):
 
