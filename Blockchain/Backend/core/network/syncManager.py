@@ -66,7 +66,7 @@ class syncManager:
         lastBlock = BlockchainDB().lastBlock()
 
         if not lastBlock:
-            GENESISBLOCK = "0000ba684bd73439ce87693ff687c37523c8b6445d9d6266b8a410267ec5ead0"
+            lastBlockHeader = "0000ba684bd73439ce87693ff687c37523c8b6445d9d6266b8a410267ec5ead0"
             #lastBlockHeader = "0000bbe173a3c36eabec25b0574bf7b055db9861b07f9ee10ad796eb06428b9b"
         else:
             lastBlockHeader = lastBlock['BlockHeader']['blockHash']
@@ -106,7 +106,8 @@ class syncManager:
                         nodeDb.write([port])
             """
                         
-            if envelope.command == b'block':
+            if envelope.command == b'block':               
+            
                 blockObj = Block.parse(envelope.stream())
                 """
                 BlockHeaderObj = BlockHeader(blockObj.BlockHeader.version,
