@@ -39,7 +39,7 @@ class Blockchain:
 
   
     """ Start the Sync Node """
-    def startSync(self, block = None):
+    def startSync(self):
         
         node = NodeDB()
         portList = node.read()
