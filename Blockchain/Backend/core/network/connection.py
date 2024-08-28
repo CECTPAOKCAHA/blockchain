@@ -1,5 +1,9 @@
 import socket 
 from Blockchain.Backend.core.network.network import NetworkEnvelope, FINISHED_SENDING
+import logging
+
+# Create a logger instance for this module
+logger = logging.getLogger(__name__)
 
 class Node:
     def __init__(self, host, port):
@@ -36,5 +40,6 @@ class Node:
         self.socket.sendall(envelope.serialize())
 
     def read(self):
+        logger.debug(f"connection.py - read(self) will parse NetworkEnvelope")
         envelope = NetworkEnvelope.parse(self.stream)
         return envelope

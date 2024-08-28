@@ -3,6 +3,10 @@ from base64 import encode
 """
 from io import BytesIO
 from Blockchain.Backend.util.util import (int_to_little_endian, little_endian_to_int, hash256)
+import logging
+
+# Assuming the necessary imports are already in place
+logger = logging.getLogger(__name__)
 
 NETWORK_MAGIC = b'\xf9\xbe\xb4\xd9'
 FINISHED_SENDING =b'\x0a\x11\x09\x07'
@@ -12,27 +16,55 @@ class NetworkEnvelope:
         self.command = command
         self.payload = payload
         self.magic = NETWORK_MAGIC
+        logger.info(f'NetworkEnvelope constructor: Command is {command}')
 
     
 
     @classmethod
     def parse(cls, s):
-        magic = s.read(4)
+        logger.info("Starting to parse the network envelope...")
+        try:
+            # Read and verify the magic number
+            magic = s.read(4)
+            logger.debug(f"Magic number read: {magic.hex()}")
 
-        if magic != NETWORK_MAGIC:
-            raise RuntimeError(f"Magic is not right {magic.hex()} vs {NETWORK_MAGIC.hex()}")
-        
-        command = s.read(12)
-        command = command.strip(b'\x00')
-        payloadLen = little_endian_to_int(s.read(4))
-        checksum = s.read(4)
-        payload = s.read(payloadLen)
-        calculatedChecksum = hash256(payload)[:4]
+            if magic != NETWORK_MAGIC:
+                error_message = f"Magic is not right {magic.hex()} vs {NETWORK_MAGIC.hex()}"
+                logger.error(error_message)
+                raise RuntimeError(error_message)
 
-        if calculatedChecksum != checksum:
-            raise IOError("Checksum does not match")
-        
-        return cls(command, payload)
+            # Read the command
+            command = s.read(12)
+            command = command.strip(b'\x00')
+            logger.debug(f"Command read: {command}")
+
+            # Read and log the payload length
+            payloadLen = little_endian_to_int(s.read(4))
+            logger.debug(f"Payload length: {payloadLen}")
+
+            # Read the checksum
+            checksum = s.read(4)
+            logger.debug(f"Checksum read: {checksum.hex()}")
+
+            # Read and log the payload
+            payload = s.read(payloadLen)
+            logger.debug(f"Payload read: {payload.hex()}")
+
+            # Calculate and verify the checksum
+            calculatedChecksum = hash256(payload)[:4]
+            logger.debug(f"Calculated checksum: {calculatedChecksum.hex()}")
+
+            if calculatedChecksum != checksum:
+                error_message = "Checksum does not match"
+                logger.error(error_message)
+                raise IOError(error_message)
+
+            logger.info("Parsing completed successfully.")
+            return cls(command, payload)
+
+        except Exception as e:
+            logger.error(f"Exception occurred in parse: {e}", exc_info=True)
+            raise
 
     
     def serialize(self):

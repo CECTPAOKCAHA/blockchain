@@ -1,6 +1,8 @@
 import sys
 sys.path.append('/home/oxana/Desktop/AU/COMP498/blockchain-udemy-adv')
 
+import logging
+import logging.config
 import configparser
 from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
@@ -16,6 +18,19 @@ import time
 ZERO_HASH = '0' * 64
 VERSION = 1
 INITIAL_TARGET = 0x0000FFFF00000000000000000000000000000000000000000000000000000000
+
+# Configure the root logger
+logging.basicConfig(
+    level=logging.DEBUG,  # Set the logging level
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("blockchain_system.log", mode='w'),  # Log to a file
+        logging.StreamHandler()  # Optional: Also log to the console
+    ]
+)
+
+# Create a logger instance for the main script
+logger = logging.getLogger(__name__)
 
 class Blockchain:
     def __init__(self, utxos, MemPool):
@@ -40,14 +55,24 @@ class Blockchain:
   
     """ Start the Sync Node """
     def startSync(self):
-        
-        node = NodeDB()
-        portList = node.read()
+        """ Start the Sync Node """
+        logger.info("Starting sync process...")
 
-        for port in portList:
-            if localHostPort != port:
-                sync = syncManager(localHost, port)
-                sync.startDownload(port)
+        try:
+        
+            node = NodeDB()
+            portList = node.read()
+            logger.debug(f"Retrieved port list from NodeDB: {portList}")
+
+            for port in portList:
+                if localHostPort != port:
+                    logger.info(f"Syncing with node at port {port}")
+                    sync = syncManager(localHost, port)
+                    sync.startDownload(port)
+                    logger.info(f"Sync with node at port {port} completed successfully")
+
+        except Exception as e:
+            logger.error(f"Exception occurred in startSync: {e}", exc_info=True)
 
     """Keep track of all the unspent transactions in cache memory for fast retrieval"""
 
@@ -161,24 +186,33 @@ class Blockchain:
 
 if __name__ == "__main__":
     """ read configuration file """
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    localHost = config['DEFAULT']['host']
-    localHostPort = int(config['MINER']['port'])
-    webport = int(config['Webhost']['port'])
-    with Manager() as manager:
-        utxos = manager.dict()
-        MemPool = manager.dict()
+    logger.info("Starting the blockchain system...")
+    try: 
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        localHost = config['DEFAULT']['host']
+        localHostPort = int(config['MINER']['port'])
+        webport = int(config['Webhost']['port'])
 
-        webapp = Process(target= main, args= (utxos, MemPool, webport))
-        webapp.start()
+        logger.info(f"Configuration loaded. Local Host: {localHost}, Local Host Port: {localHostPort}, Web Port: {webport}")
 
-        """ Start Server and Listen for miner requests """
-        sync = syncManager(localHost, localHostPort)
-        startServer = Process(target = sync.spinUpTheServer)
-        startServer.start()
+        with Manager() as manager:
+            utxos = manager.dict()
+            MemPool = manager.dict()
+
+            webapp = Process(target= main, args= (utxos, MemPool, webport))
+            webapp.start()
+            logger.info("Web app process started.")
+
+            """ Start Server and Listen for miner requests """
+            sync = syncManager(localHost, localHostPort)
+            startServer = Process(target = sync.spinUpTheServer)
+            startServer.start()
+            logger.info("Sync server process started.")
 
 
-        blockchain = Blockchain(utxos, MemPool)
-        blockchain.startSync()
-        blockchain.main()
+            blockchain = Blockchain(utxos, MemPool)
+            blockchain.startSync()
+            blockchain.main()
+    except Exception as e:
+        logger.error(f"Exception in main execution block: {e}", exc_info=True)

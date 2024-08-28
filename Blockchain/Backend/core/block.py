@@ -1,11 +1,17 @@
 from Blockchain.Backend.util.util import (little_endian_to_int, int_to_little_endian, encode_varint, read_varint)
 from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.core.Tx import Tx
+import logging
+
+# Create a logger instance for this module
+logger = logging.getLogger(__name__)
 
 class Block:
     """
      Block is a storage container that stores transactions
     """
+
+    command = b'block'
 
     def __init__(self, Height, Blocksize, BlockHeader, TxCount, Txs):
         self.Height = Height
@@ -41,17 +47,25 @@ class Block:
 
     @classmethod
     def to_obj(cls, lastblock):
-        block = BlockHeader(lastblock['BlockHeader']['version'],
-                    bytes.fromhex(lastblock['BlockHeader']['prevBlockHash']),
-                    bytes.fromhex(lastblock['BlockHeader']['merkleRoot']),
-                    lastblock['BlockHeader']['timestamp'],
-                    bytes.fromhex(lastblock['BlockHeader']['bits']))
-        
-        block.nonce = int_to_little_endian(lastblock['BlockHeader']['nonce'], 4)
+        try:
+            block = BlockHeader(lastblock['BlockHeader']['version'],
+                        bytes.fromhex(lastblock['BlockHeader']['prevBlockHash']),
+                        bytes.fromhex(lastblock['BlockHeader']['merkleRoot']),
+                        lastblock['BlockHeader']['timestamp'],
+                        bytes.fromhex(lastblock['BlockHeader']['bits']))
 
-        Transactions = []
-        for tx in lastblock['Txs']:
-            Transactions.append(Tx.to_obj(tx))
-        
-        block.BlockHash = bytes.fromhex(lastblock['BlockHeader']['blockHash'])
-        return cls(lastblock['Height'], lastblock['Blocksize'], block, len(Transactions), Transactions)
+            block.nonce = int_to_little_endian(lastblock['BlockHeader']['nonce'], 4)
+
+
+            Transactions = []
+            for tx in lastblock['Txs']:
+                Transactions.append(Tx.to_obj(tx))
+            
+            block.blockHash = bytes.fromhex(lastblock['BlockHeader']['blockHash'])
+            return cls(lastblock['Height'], lastblock['Blocksize'], block, len(Transactions), Transactions)
+        except Exception as e:
+            # Log detailed error information
+            logger.error(f"Unable to to_obj() the block: {e}")
+            logger.debug(f"Last block data: {lastblock}")
+            logger.exception("Exception occurred while converting block to object")
+            raise
