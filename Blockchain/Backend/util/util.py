@@ -123,3 +123,8 @@ def target_to_bits(target):
         coefficient = raw_bytes[:3]  # <4>
     new_bits = coefficient[::-1] + bytes([exponent])  # <5>
     return new_bits
+
+def bits_to_target(bits):
+    exponent = bits[-1]
+    coefficient = little_endian_to_int(bits[:-1])
+    return coefficient * 256**(exponent - 3)

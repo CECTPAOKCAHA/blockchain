@@ -69,3 +69,9 @@ class Block:
             logger.debug(f"Last block data: {lastblock}")
             logger.exception("Exception occurred while converting block to object")
             raise
+
+    
+    def to_dict(self):
+        dt = self.__dict__
+        self.BlockHeader = self.BlockHeader.to_dict()
+        return dt    

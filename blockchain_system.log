@@ -1,179 +1,124 @@
-2024-08-28 15:22:32,923 - __main__ - INFO - Starting the blockchain system...
-2024-08-28 15:22:32,924 - __main__ - INFO - Configuration loaded. Local Host: 127.0.0.1, Local Host Port: 8888, Web Port: 5900
-2024-08-28 15:22:32,937 - __main__ - INFO - Web app process started.
-2024-08-28 15:22:32,937 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 8888
-2024-08-28 15:22:32,938 - __main__ - INFO - Sync server process started.
-2024-08-28 15:22:32,939 - __main__ - INFO - Starting sync process...
-2024-08-28 15:22:32,939 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888]
-2024-08-28 15:22:32,940 - Blockchain.Backend.core.network.syncManager - INFO - SERVER STARTED
-2024-08-28 15:22:32,940 - Blockchain.Backend.core.network.syncManager - INFO - [LISTENING] at 127.0.0.1:8888
-2024-08-28 15:22:32,941 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
-2024-08-28 15:22:32,941 - werkzeug - INFO -  * Running on http://127.0.0.1:5900/ (Press CTRL+C to quit)
-2024-08-28 15:22:39,513 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 55792)
-2024-08-28 15:22:39,514 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
-2024-08-28 15:22:39,514 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
-2024-08-28 15:22:39,514 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'requestBlock'
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 64
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: f0e2ed4e
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - DEBUG - Payload read: 0000770e3c06bd4f977837b97a430255df8e8202fe816fa1df4e57ea0e3105d90000000000000000000000000000000000000000000000000000000000000000
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: f0e2ed4e
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'requestBlock'
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to sendBlockToRequestor
-2024-08-28 15:22:39,515 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to fetchBlocksFromBlockchain()
-2024-08-28 15:22:39,516 - Blockchain.Backend.core.network.syncManager - INFO - fetched 74 blocks
-2024-08-28 15:22:39,516 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to send sendBlock()
-2024-08-28 15:22:39,516 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,516 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 1
-2024-08-28 15:22:39,516 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,516 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 2
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 3
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 4
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 5
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 6
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 7
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 8
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 9
-2024-08-28 15:22:39,517 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 10
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 11
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 12
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 13
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 14
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 15
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 16
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,518 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 17
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 18
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 19
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 20
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 21
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 22
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 23
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,519 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 24
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 25
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 26
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 27
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 28
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 29
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 30
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 31
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,520 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 32
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 33
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 34
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 35
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 36
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 37
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 38
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,521 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 39
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 40
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 41
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 42
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 43
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 44
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 45
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 46
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,522 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 47
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 48
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 49
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 50
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 51
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 52
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 53
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 54
-2024-08-28 15:22:39,523 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 55
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 56
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 57
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 58
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 59
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 60
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 61
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 62
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 63
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,524 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 64
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 65
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 66
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 67
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 68
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 69
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 70
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 71
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 72
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 73
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
-2024-08-28 15:22:39,525 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 74
-2024-08-28 15:22:39,526 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to sendFinishedMessage()
-2024-08-28 15:22:39,526 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'Finished'
-2024-08-28 15:22:39,526 - Blockchain.Backend.core.network.syncManager - INFO - Start Block is b'\x00\x00w\x0e<\x06\xbdO\x97x7\xb9zC\x02U\xdf\x8e\x82\x02\xfe\x81o\xa1\xdfNW\xea\x0e1\x05\xd9' 
+2024-08-28 21:20:43,289 - __main__ - INFO - Starting the blockchain system...
+2024-08-28 21:20:43,290 - __main__ - INFO - Configuration loaded. Local Host: 127.0.0.1, Local Host Port: 8888, Web Port: 5900
+2024-08-28 21:20:43,301 - __main__ - INFO - Web app process started.
+2024-08-28 21:20:43,302 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 8888
+2024-08-28 21:20:43,303 - __main__ - INFO - Sync server process started.
+2024-08-28 21:20:43,304 - __main__ - INFO - Starting sync process...
+2024-08-28 21:20:43,304 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888]
+2024-08-28 21:20:43,305 - Blockchain.Backend.core.network.syncManager - INFO - SERVER STARTED
+2024-08-28 21:20:43,305 - Blockchain.Backend.core.network.syncManager - INFO - [LISTENING] at 127.0.0.1:8888
+2024-08-28 21:20:43,305 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-08-28 21:20:43,307 - werkzeug - INFO -  * Running on http://127.0.0.1:5900/ (Press CTRL+C to quit)
+2024-08-28 21:20:53,338 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 54638)
+2024-08-28 21:20:53,338 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'requestBlock'
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 64
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 586e9668
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - DEBUG - Payload read: 000037278fb82dd560695c7cd029760bae25f082126573dbebf7bb5ef45093220000000000000000000000000000000000000000000000000000000000000000
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 586e9668
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'requestBlock'
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to sendBlockToRequestor
+2024-08-28 21:20:53,339 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to fetchBlocksFromBlockchain()
+2024-08-28 21:20:53,340 - Blockchain.Backend.core.network.syncManager - INFO - fetched 46 blocks
+2024-08-28 21:20:53,340 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to send sendBlock()
+2024-08-28 21:20:53,340 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,340 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 1
+2024-08-28 21:20:53,340 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,340 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 2
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 3
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 4
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 5
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 6
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 7
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 8
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 9
+2024-08-28 21:20:53,341 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 10
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 11
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 12
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 13
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 14
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 15
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 16
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 17
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 18
+2024-08-28 21:20:53,342 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 19
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 20
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 21
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 22
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 23
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 24
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 25
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 26
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 27
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,343 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 28
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 29
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 30
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 31
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 32
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 33
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 34
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 35
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 36
+2024-08-28 21:20:53,344 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 37
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 38
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 39
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 40
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 41
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 42
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 43
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,345 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 44
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 45
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.syncManager - INFO - Block Sent 46
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to sendFinishedMessage()
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'Finished'
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.syncManager - INFO - All blocks sent.
+2024-08-28 21:20:53,346 - Blockchain.Backend.core.network.syncManager - INFO - Start Block is b'\x00\x007\'\x8f\xb8-\xd5`i\\|\xd0)v\x0b\xae%\xf0\x82\x12es\xdb\xeb\xf7\xbb^\xf4P\x93"' 
  End Block is b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'

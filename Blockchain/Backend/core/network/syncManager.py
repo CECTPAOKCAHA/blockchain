@@ -1,4 +1,6 @@
-from Backend.core.block import Block
+from Blockchain.Backend.util.util import little_endian_to_int
+from Blockchain.Backend.core.block import Block
+from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.core.network.connection import Node
 from Blockchain.Backend.core.database.database import BlockchainDB
 from Blockchain.Backend.core.network.network import requestBlock, NetworkEnvelope, FinishedSending
@@ -59,6 +61,7 @@ class syncManager:
             MessageFinish = FinishedSending()
             envelope = NetworkEnvelope(MessageFinish.command, MessageFinish.serialize())
             self.conn.sendall(envelope.serialize())
+            logger.info(f'All blocks sent.')
         except Exception as e:
             logger.error(f"Unable to sendFinishedMessage()")        
 
@@ -104,7 +107,7 @@ class syncManager:
             # Retrieve the last block from the database
             lastBlock = BlockchainDB().lastBlock()
             if not lastBlock:
-                lastBlockHeader = "0000770e3c06bd4f977837b97a430255df8e8202fe816fa1df4e57ea0e3105d9"
+                lastBlockHeader = "000037278fb82dd560695c7cd029760bae25f082126573dbebf7bb5ef4509322"
                 logger.info(f"No last block found. Using default block header: {lastBlockHeader}")
             else:
                 lastBlockHeader = lastBlock['BlockHeader']['blockHash']
@@ -119,13 +122,14 @@ class syncManager:
             # Establish connection to the node
             self.connect = Node(self.host, port)
             self.socket = self.connect.connect(port)
+            self.stream = self.socket.makefile('rb', None)
             self.connect.send(getHeaders)
             logger.info(f"Connected to node at port {port} and sent header request.")
 
             # Continuously read and process the network envelope
             while True:
                 logger.debug("Waiting to receive data from the node...")
-                self.stream = self.socket.makefile('rb', None)
+                
                 envelope = NetworkEnvelope.parse(self.stream)
 
                 # Check if all blocks have been received
@@ -137,8 +141,32 @@ class syncManager:
                 # Process the received block
                 if envelope.command == b'block':
                     blockObj = Block.parse(envelope.stream())
-                    logger.info(f"Block received - Height: {blockObj.Height}")
+                    BlockHeaderObj = BlockHeader(blockObj.BlockHeader.version,
+                                blockObj.BlockHeader.prevBlockHash,
+                                blockObj.BlockHeader.merkleRoot,
+                                blockObj.BlockHeader.timestamp,
+                                blockObj.BlockHeader.bits,
+                                blockObj.BlockHeader.nonce)
+                    if BlockHeaderObj.validateBlock():
+                        for idx, tx in enumerate(blockObj.Txs):
+                            tx.TxId = tx.id()
+                            blockObj.Txs[idx] = tx.to_dict()
 
+                        BlockHeaderObj.blockHash = BlockHeaderObj.generateBlockHash()
+                        BlockHeaderObj.prevBlockHash = BlockHeaderObj.prevBlockHash.hex()
+                        BlockHeaderObj.merkleRoot = BlockHeaderObj.merkleRoot.hex()
+                        BlockHeaderObj.nonce = little_endian_to_int(BlockHeaderObj.nonce)
+                        BlockHeaderObj.bits = BlockHeaderObj.bits.hex()
+
+                        blockObj.BlockHeader = BlockHeaderObj
+
+                        BlockchainDB().write([blockObj.to_dict()])
+
+                        logger.info(f"Block received - Height: {blockObj.Height}")
+
+                    else:
+                        logger.info(f'Chain is broken')
+                    
         except Exception as e:
             logger.error(f"Exception occurred in startDownload: {e}", exc_info=True)
             if hasattr(self, 'socket'):

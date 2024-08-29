@@ -1,4 +1,5 @@
-from Blockchain.Backend.util.util import hash256, int_to_little_endian, little_endian_to_int
+from Blockchain.Backend.core.database.database import BlockchainDB
+from Blockchain.Backend.util.util import bits_to_target, hash256, int_to_little_endian, little_endian_to_int
 class BlockHeader:
     def __init__(self, version, prevBlockHash, merkleRoot, timestamp, bits, nonce=None):
         self.version = version
@@ -47,6 +48,28 @@ class BlockHeader:
             self.nonce += 1
             print(f"Mining started {self.nonce}", end= '\r')
         self.blockHash = int_to_little_endian(self.blockHash, 32).hex()[::-1]
+        self.nonce -= 1
         self.bits = self.bits.hex()
 
+    def validateBlock(self):
+        lastBlock = BlockchainDB().lastBlock()
+
+        if self.prevBlockHash.hex() == lastBlock['BlockHeader']['blockHash']:
+            if self.check_pow():
+                return True
+            
+    def check_pow(self):
+        sha = hash256(self.serialize())
+        proof = little_endian_to_int(sha)
+        return proof < bits_to_target(self.bits)
+
+
+    def generateBlockHash(self):
+        sha = hash256(self.serialize())
+        proof = little_endian_to_int(sha)
+        return int_to_little_endian(proof, 32).hex()[::-1]
+    
+    def to_dict(self):
+        dt = self.__dict__
+        return dt
 
