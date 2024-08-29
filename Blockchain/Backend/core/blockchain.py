@@ -68,7 +68,7 @@ class Blockchain:
                 if localHostPort != port:
                     logger.info(f"Syncing with node at port {port}")
                     sync = syncManager(localHost, port)
-                    sync.startDownload(port)
+                    sync.startDownload(localHostPort -1, port)
                     logger.info(f"Sync with node at port {port} completed successfully")
 
         except Exception as e:

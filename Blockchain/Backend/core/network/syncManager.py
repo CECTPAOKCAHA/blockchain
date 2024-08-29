@@ -2,7 +2,7 @@ from Blockchain.Backend.util.util import little_endian_to_int
 from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.core.network.connection import Node
-from Blockchain.Backend.core.database.database import BlockchainDB
+from Blockchain.Backend.core.database.database import BlockchainDB, NodeDB
 from Blockchain.Backend.core.network.network import requestBlock, NetworkEnvelope, FinishedSending
 from threading import Thread
 import logging
@@ -36,7 +36,8 @@ class syncManager:
     def handleConnection(self):
         envelope = self.server.read()
         try:          
-
+            if len(str(self.addr[1])) == 4:
+                self.addNode()
             if envelope.command == requestBlock.command:
                 start_block, end_block = requestBlock.parse(envelope.stream())
                 self.sendBlockToRequestor(start_block)
@@ -44,6 +45,13 @@ class syncManager:
 
         except Exception as e:            
             logger.error(f" Error while processing the client request \n {e}")
+
+    def addNode(self):
+        nodeDb = NodeDB()
+        portList = nodeDb.read()
+
+        if self.addr[1] not in portList:
+            nodeDb.write([self.addr[1] + 1])    
 
     def sendBlockToRequestor(self, start_block):
         logger.debug(f'Trying to sendBlockToRequestor')
@@ -100,7 +108,7 @@ class syncManager:
         except Exception as e:
             logger.error(f"Unable to fetchBlocksFromBlockchain()")
         
-    def startDownload(self, port):
+    def startDownload(self, localport, port):
         try:
             logger.info(f"Starting download from node at port {port}...")
 
@@ -121,7 +129,7 @@ class syncManager:
 
             # Establish connection to the node
             self.connect = Node(self.host, port)
-            self.socket = self.connect.connect(port)
+            self.socket = self.connect.connect(localport)
             self.stream = self.socket.makefile('rb', None)
             self.connect.send(getHeaders)
             logger.info(f"Connected to node at port {port} and sent header request.")

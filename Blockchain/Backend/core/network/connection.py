@@ -21,9 +21,8 @@ class Node:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         """
         if bindPort:
-            self.socket.bind((self.host, port))
         """
-            
+        self.socket.bind((self.host, port))
         self.socket.connect((self.host, self.port))
         return self.socket
     
