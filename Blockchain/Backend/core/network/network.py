@@ -2,7 +2,7 @@
 from base64 import encode
 """
 from io import BytesIO
-from Blockchain.Backend.util.util import (int_to_little_endian, little_endian_to_int, hash256)
+from Blockchain.Backend.util.util import (encode_varint, int_to_little_endian, little_endian_to_int, hash256, read_varint)
 import logging
 
 # Assuming the necessary imports are already in place
@@ -104,12 +104,12 @@ class requestBlock:
         result = self.startBlock
         result += self.endBlock
         return result 
-"""
+
 class portlist:
     command = b'portlist'
     def __init__(self, ports = None):
         self.ports = ports
-
+    
     @classmethod
     def parse(cls, s):
         ports = []
@@ -120,6 +120,7 @@ class portlist:
             ports.append(port)
         
         return ports
+        
 
     def serialize(self):
         result = encode_varint(len(self.ports))
@@ -128,7 +129,7 @@ class portlist:
             result += int_to_little_endian(port, 4)
         
         return result
-"""
+
 class FinishedSending:
     command = b'Finished'
 

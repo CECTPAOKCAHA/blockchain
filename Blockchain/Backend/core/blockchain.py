@@ -72,7 +72,7 @@ class Blockchain:
                     logger.info(f"Sync with node at port {port} completed successfully")
 
         except Exception as e:
-            logger.error(f"Exception occurred in startSync: {e}", exc_info=True)
+            logger.error(f"Error while downloading the Blockchain (startSync): {e}", exc_info=True)
 
     """Keep track of all the unspent transactions in cache memory for fast retrieval"""
 

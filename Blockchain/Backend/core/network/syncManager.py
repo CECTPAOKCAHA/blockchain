@@ -3,7 +3,7 @@ from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.core.network.connection import Node
 from Blockchain.Backend.core.database.database import BlockchainDB, NodeDB
-from Blockchain.Backend.core.network.network import requestBlock, NetworkEnvelope, FinishedSending
+from Blockchain.Backend.core.network.network import portlist, requestBlock, NetworkEnvelope, FinishedSending
 from threading import Thread
 import logging
 
@@ -50,7 +50,7 @@ class syncManager:
         nodeDb = NodeDB()
         portList = nodeDb.read()
 
-        if self.addr[1] not in portList:
+        if self.addr[1] and (self.addr[1] +1) not in portList:
             nodeDb.write([self.addr[1] + 1])    
 
     def sendBlockToRequestor(self, start_block):
@@ -59,9 +59,18 @@ class syncManager:
 
         try:
             self.sendBlock(blocksToSend)
+            self.sendPortlist()
             self.sendFinishedMessage()
         except Exception as e:
             logger.error(f"Unable to send the blocks \n {e}")
+
+    def sendPortlist(self):
+        nodeDB = NodeDB()
+        portLists = nodeDB.read()
+
+        portLst = portlist(portLists)
+        envelope = NetworkEnvelope(portLst.command, portLst.serialize())
+        self.conn.sendall(envelope.serialize())
 
     def sendFinishedMessage(self):
         logger.debug(f'trying to sendFinishedMessage()')
@@ -142,9 +151,19 @@ class syncManager:
 
                 # Check if all blocks have been received
                 if envelope.command == b"Finished":
+                    blockObj = FinishedSending.parse(envelope.stream())
                     logger.info("All blocks received.")
                     self.socket.close()
                     break
+
+                if envelope.command == b'portlist':
+                    ports = portlist.parse(envelope.stream())
+                    nodeDb = NodeDB()
+                    portlists = nodeDb.read()
+
+                    for port in ports:
+                        if port not in portlists:
+                            nodeDb.write([port])
 
                 # Process the received block
                 if envelope.command == b'block':
