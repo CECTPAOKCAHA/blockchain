@@ -12,10 +12,15 @@ logger = logging.getLogger(__name__)
 
 class syncManager:
     # def __init__(self, host, port, newBlockAvailable = None, secondryChain = None, Mempool = None):
-    def __init__(self, host, port):
+    def __init__(self, host, port, newBlockAvailable = None):
         self.host = host
         self.port = port 
-        logger.debug(f"Constructor: syncManager initialized with host: {self.host}, port: {self.port}")
+        self.newBlockAvailable = newBlockAvailable
+        if newBlockAvailable != None:
+            isNewBlockAvailable = False
+        else:
+            isNewBlockAvailable = True
+        logger.debug(f"Constructor: syncManager initialized with host: {self.host}, port: {self.port}, isNewBlockAvailable: {isNewBlockAvailable}")
 
     def spinUpTheServer(self):
         try:
@@ -38,12 +43,26 @@ class syncManager:
         try:          
             if len(str(self.addr[1])) == 4:
                 self.addNode()
+
+            if envelope.command == b'block':
+                blockObj = Block.parse(envelope.stream())
+                BlockHeaderObj = BlockHeader(blockObj.BlockHeader.version,
+                                blockObj.BlockHeader.prevBlockHash,
+                                blockObj.BlockHeader.merkleRoot,
+                                blockObj.BlockHeader.timestamp,
+                                blockObj.BlockHeader.bits,
+                                blockObj.BlockHeader.nonce)
+                self.newBlockAvailable[BlockHeaderObj.generateBlockHash()] = blockObj
+                logger.info(f'New Block Received : {blockObj.Height}')
             if envelope.command == requestBlock.command:
                 start_block, end_block = requestBlock.parse(envelope.stream())
                 self.sendBlockToRequestor(start_block)
                 logger.info(f"Start Block is {start_block} \n End Block is {end_block}")
+            
+            self.conn.close()
 
-        except Exception as e:            
+        except Exception as e:        
+            self.conn.close()    
             logger.error(f" Error while processing the client request \n {e}")
 
     def addNode(self):
@@ -116,8 +135,21 @@ class syncManager:
         
         except Exception as e:
             logger.error(f"Unable to fetchBlocksFromBlockchain()")
+
+    def connectToHost(self, localport, port, bindPort = None):
+        self.connect = Node(self.host, port)
         
-    def startDownload(self, localport, port):
+        if bindPort:
+            self.socket = self.connect.connect(localport, bindPort)
+        else:        
+            self.socket = self.connect.connect(localport)
+        self.stream = self.socket.makefile('rb', None)
+
+    def publishBlock(self, localport, port, block):
+        self.connectToHost(localport, port)
+        self.connect.send(block)
+        
+    def startDownload(self, localport, port, bindPort):
         try:
             logger.info(f"Starting download from node at port {port}...")
 
@@ -135,11 +167,7 @@ class syncManager:
             # Create a request to get headers starting from the last block
             getHeaders = requestBlock(startBlock=startBlock)
             logger.debug(f"Requesting headers starting from block: {startBlock.hex()}")
-
-            # Establish connection to the node
-            self.connect = Node(self.host, port)
-            self.socket = self.connect.connect(localport)
-            self.stream = self.socket.makefile('rb', None)
+            self.connectToHost(localport, port, bindPort)
             self.connect.send(getHeaders)
             logger.info(f"Connected to node at port {port} and sent header request.")
 

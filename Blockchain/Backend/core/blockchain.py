@@ -33,9 +33,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class Blockchain:
-    def __init__(self, utxos, MemPool):
+    def __init__(self, utxos, MemPool, newBlockAvailable):
         self.utxos = utxos
         self.MemPool = MemPool
+        self.newBlockAvailable = newBlockAvailable
         self.current_target = INITIAL_TARGET
         self.bits = target_to_bits(INITIAL_TARGET)
 
@@ -54,7 +55,7 @@ class Blockchain:
 
   
     """ Start the Sync Node """
-    def startSync(self):
+    def startSync(self, block = None):
         """ Start the Sync Node """
         logger.info("Starting sync process...")
 
@@ -68,8 +69,14 @@ class Blockchain:
                 if localHostPort != port:
                     logger.info(f"Syncing with node at port {port}")
                     sync = syncManager(localHost, port)
-                    sync.startDownload(localHostPort -1, port)
-                    logger.info(f"Sync with node at port {port} completed successfully")
+
+                    if block:
+                        sync.publishBlock(localHostPort -1, port, block)
+                        return 
+                    else:
+                        sync.startDownload(localHostPort -1, port, True)                    
+                        logger.info(f"Sync with node at port {port} completed successfully")
+                        return
 
         except Exception as e:
             logger.error(f"Error while downloading the Blockchain (startSync): {e}", exc_info=True)
@@ -146,7 +153,36 @@ class Blockchain:
                 self.output_amount += tx_out.amount
 
         self.fee = self.input_amount - self.output_amount
-        
+
+    def BroadcastBlock(self, block):
+        self.startSync(block)       
+
+    def LostCompetition(self):
+        deleteBlock = []
+        tempBlocks = dict(self.newBlockAvailable)
+
+        for newblock in tempBlocks:
+            block = tempBlocks[newblock]
+            deleteBlock.append(newblock)
+
+            BlockHeaderObj = BlockHeader(block.BlockHeader.version,
+                                    block.BlockHeader.prevBlockHash,
+                                    block.BlockHeader.merkleRoot,
+                                    block.BlockHeader.timestamp,
+                                    block.BlockHeader.bits,
+                                    block.BlockHeader.nonce)
+            
+            if BlockHeaderObj.validateBlock(): 
+                for tx in block.Txs:
+                    self.utxos[tx.id()] = tx.serialize()
+                    tx.TxId = tx.id()
+                    tx = tx.to_dict()
+
+                block.BlockHeader.to_hex()
+                BlockchainDB().write([block.to_dict()])
+
+        for blockHash in deleteBlock:
+            del self.newBlockAvailable[blockHash]
 
     def addBlock(self, BlockHeight, prevBlockHash):
         self.read_transaction_from_memorypool()
@@ -163,14 +199,32 @@ class Blockchain:
         
         merkleRoot = merkle_root(self.TxIds)[::-1].hex()
         blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, self.bits, nonce=0)
-        blockheader.mine(self.current_target)
-        time.sleep(5) # Add a 5-second delay here
-        self.remove_spent_Transactions()
-        self.remove_transactions_from_memorypool()
-        self.store_utxos_in_cache( )
-        self.convert_to_json()
-        print(f"Block {BlockHeight} mined successfully with Nonce value of {blockheader.nonce}")
-        self.write_on_disk([Block(BlockHeight, self.Blocksize, blockheader.__dict__, len(self.TxJson), self.TxJson).__dict__])
+        competitionOver = blockheader.mine(self.current_target, self.newBlockAvailable)
+
+        if competitionOver:
+            self.LostCompetition()
+        else:            
+            newBlock = Block(BlockHeight, 
+                            self.Blocksize, 
+                            blockheader, 
+                            len(self.addTransactionsInBlock),
+                            self.addTransactionsInBlock
+                            )
+            blockheader.to_bytes()
+            self.BroadcastBlock(newBlock)
+            blockheader.to_hex()
+            time.sleep(5) # Add a 5-second delay here
+            self.remove_spent_Transactions()
+            self.remove_transactions_from_memorypool()
+            self.store_utxos_in_cache( )
+            self.convert_to_json()
+            print(f"Block {BlockHeight} mined successfully with Nonce value of {blockheader.nonce}")
+            self.write_on_disk([Block(BlockHeight, 
+                                      self.Blocksize, 
+                                      blockheader.__dict__, 
+                                      len(self.TxJson), 
+                                      self.TxJson).__dict__]
+                                      )
         
 
     def main(self):
@@ -199,19 +253,20 @@ if __name__ == "__main__":
         with Manager() as manager:
             utxos = manager.dict()
             MemPool = manager.dict()
+            newBlockAvailable = manager.dict()
 
             webapp = Process(target= main, args= (utxos, MemPool, webport))
             webapp.start()
             logger.info("Web app process started.")
 
             """ Start Server and Listen for miner requests """
-            sync = syncManager(localHost, localHostPort)
+            sync = syncManager(localHost, localHostPort, newBlockAvailable)
             startServer = Process(target = sync.spinUpTheServer)
             startServer.start()
             logger.info("Sync server process started.")
 
 
-            blockchain = Blockchain(utxos, MemPool)
+            blockchain = Blockchain(utxos, MemPool, newBlockAvailable)
             blockchain.startSync()
             blockchain.main()
     except Exception as e:

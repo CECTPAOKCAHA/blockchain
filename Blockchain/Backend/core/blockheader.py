@@ -28,12 +28,30 @@ class BlockHeader:
         result += self.bits
         result += self.nonce
         return result 
+    
+    def to_hex(self):
+        self.blockHash    =  self.generateBlockHash()
+        self.nonce        =  little_endian_to_int(self.nonce)
+        self.prevBlockHash   =  self.prevBlockHash.hex()
+        self.merkleRoot  =  self.merkleRoot.hex()
+        self.bits         =  self.bits.hex()
 
-    def mine(self, target):
+    def to_bytes(self):
+        self.nonce        =  int_to_little_endian(self.nonce, 4)
+        self.prevBlockHash   =  bytes.fromhex(self.prevBlockHash)
+        self.merkleRoot  =  bytes.fromhex(self.merkleRoot)
+        self.blockHash    =  bytes.fromhex(self.blockHash)
+        self.bits         =  bytes.fromhex(self.bits)
+
+    def mine(self, target, newBlockAvailable):
 
         self.blockHash = target + 1
+        competitionOver = False
 
         while self.blockHash > target:
+            if newBlockAvailable:
+                competitionOver = True
+                return competitionOver
             self.blockHash = little_endian_to_int(
                 hash256(
                     int_to_little_endian(self.version, 4)
