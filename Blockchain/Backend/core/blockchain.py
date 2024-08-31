@@ -200,7 +200,13 @@ class Blockchain:
 
                     if lastValidBlock['BlockHeader']['blockHash'] == prevBlockhash:
                         for i in range(len(addBlocks) - 1):
-                            blockchain.pop()
+                            orphanBlock = blockchain.pop()
+
+                            for tx in orphanBlock['Txs']:
+                                if tx['TxId'] in self.utxos:
+                                    del self.utxos[tx['TxId']]
+
+
                         BlockchainDB().update(blockchain)
 
                         for Bobj in addBlocks[::-1]:
