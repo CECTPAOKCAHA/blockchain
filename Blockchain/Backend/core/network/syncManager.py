@@ -12,10 +12,11 @@ logger = logging.getLogger(__name__)
 
 class syncManager:
     # def __init__(self, host, port, newBlockAvailable = None, secondryChain = None, Mempool = None):
-    def __init__(self, host, port, newBlockAvailable = None):
+    def __init__(self, host, port, newBlockAvailable = None, secondryChain = None):
         self.host = host
         self.port = port 
         self.newBlockAvailable = newBlockAvailable
+        self.secondryChain = secondryChain
         if newBlockAvailable != None:
             isNewBlockAvailable = False
         else:
@@ -78,6 +79,7 @@ class syncManager:
 
         try:
             self.sendBlock(blocksToSend)
+            self.sendSecondryChain()
             self.sendPortlist()
             self.sendFinishedMessage()
         except Exception as e:
@@ -90,6 +92,12 @@ class syncManager:
         portLst = portlist(portLists)
         envelope = NetworkEnvelope(portLst.command, portLst.serialize())
         self.conn.sendall(envelope.serialize())
+
+    def sendSecondryChain(self):
+        TempSecChain = dict(self.secondryChain)        
+        for blockHash in TempSecChain:
+            envelope = NetworkEnvelope(TempSecChain[blockHash].command, TempSecChain[blockHash].serialize())
+            self.conn.sendall(envelope.serialize())
 
     def sendFinishedMessage(self):
         logger.debug(f'trying to sendFinishedMessage()')
@@ -220,7 +228,7 @@ class syncManager:
                         logger.info(f"Block received - Height: {blockObj.Height}")
 
                     else:
-                        logger.info(f'Chain is broken')
+                        self.secondryChain[BlockHeaderObj.generateBlockHash()] = blockObj
                     
         except Exception as e:
             logger.error(f"Exception occurred in startDownload: {e}", exc_info=True)

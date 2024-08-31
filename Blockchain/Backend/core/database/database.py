@@ -19,6 +19,11 @@ class BaseDB:
         else:
             data = []
         return data
+    
+    def update(self, data):
+        with open(self.filepath,'w+') as f:
+            f.write(json.dumps(data))
+        return True    
 
     def write(self, item):
         data = self.read()

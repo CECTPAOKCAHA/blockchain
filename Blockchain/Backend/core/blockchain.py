@@ -3,6 +3,7 @@ sys.path.append('/home/oxana/Desktop/AU/COMP498/blockchain-udemy-adv')
 
 import logging
 import logging.config
+import copy
 import configparser
 from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
@@ -33,10 +34,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class Blockchain:
-    def __init__(self, utxos, MemPool, newBlockAvailable):
+    def __init__(self, utxos, MemPool, newBlockAvailable, secondryChain):
         self.utxos = utxos
         self.MemPool = MemPool
         self.newBlockAvailable = newBlockAvailable
+        self.secondryChain = secondryChain
         self.current_target = INITIAL_TARGET
         self.bits = target_to_bits(INITIAL_TARGET)
 
@@ -68,15 +70,15 @@ class Blockchain:
             for port in portList:
                 if localHostPort != port:
                     logger.info(f"Syncing with node at port {port}")
-                    sync = syncManager(localHost, port)
-
-                    if block:
-                        sync.publishBlock(localHostPort -1, port, block)
-                        return 
-                    else:
-                        sync.startDownload(localHostPort -1, port, True)                    
-                        logger.info(f"Sync with node at port {port} completed successfully")
-                        return
+                    sync = syncManager(localHost, port, secondryChain = self.secondryChain)
+                    try:
+                        if block:
+                            sync.publishBlock(localHostPort -1, port, block)
+                        else:
+                            sync.startDownload(localHostPort -1, port, True)                    
+                            logger.info(f"Sync with node at port {port} completed successfully")
+                    except Exception as err:
+                        logger.error(f'Error while publishing or Downloading a Blockchain\n{err}')
 
         except Exception as e:
             logger.error(f"Error while downloading the Blockchain (startSync): {e}", exc_info=True)
@@ -173,13 +175,45 @@ class Blockchain:
                                     block.BlockHeader.nonce)
             
             if BlockHeaderObj.validateBlock(): 
-                for tx in block.Txs:
+                for idx, tx in enumerate(block.Txs):
                     self.utxos[tx.id()] = tx.serialize()
-                    tx.TxId = tx.id()
-                    tx = tx.to_dict()
+                    block.Txs[idx].TxId = tx.id()
+                    block.Txs[idx] = tx.to_dict()
 
                 block.BlockHeader.to_hex()
                 BlockchainDB().write([block.to_dict()])
+            else:
+                if self.secondryChain:
+                    addBlocks = []
+                    addBlocks.append(block) ###
+                    prevBlockhash = block.BlockHeader.prevBlockHash.hex()
+                    count = 0
+
+                    while count != len(self.secondryChain):
+                        if prevBlockhash in self.secondryChain:
+                            addBlocks.append(self.secondryChain[prevBlockhash])
+                            prevBlockhash = self.secondryChain[prevBlockhash].BlockHeader.prevBlockHash.hex()
+                        count += 1
+
+                    blockchain = BlockchainDB().read()
+                    lastValidBlock = blockchain[-len(addBlocks)]
+
+                    if lastValidBlock['BlockHeader']['blockHash'] == prevBlockhash:
+                        for i in range(len(addBlocks) - 1):
+                            blockchain.pop()
+                        BlockchainDB().update(blockchain)
+
+                        for Bobj in addBlocks[::-1]:
+                            validBlock = copy.deepcopy(Bobj)
+                            validBlock.BlockHeader.to_hex()
+
+                            for index, tx in enumerate(validBlock.Txs):
+                                validBlock.Txs[index].TxId = tx.id()
+                                validBlock.Txs[index] = tx.to_dict()
+
+                            BlockchainDB().write([validBlock.to_dict()])
+
+                self.secondryChain[newblock] = block
 
         for blockHash in deleteBlock:
             del self.newBlockAvailable[blockHash]
@@ -254,19 +288,20 @@ if __name__ == "__main__":
             utxos = manager.dict()
             MemPool = manager.dict()
             newBlockAvailable = manager.dict()
+            secondryChain = manager.dict()
 
             webapp = Process(target= main, args= (utxos, MemPool, webport))
             webapp.start()
             logger.info("Web app process started.")
 
             """ Start Server and Listen for miner requests """
-            sync = syncManager(localHost, localHostPort, newBlockAvailable)
+            sync = syncManager(localHost, localHostPort, newBlockAvailable, secondryChain)
             startServer = Process(target = sync.spinUpTheServer)
             startServer.start()
             logger.info("Sync server process started.")
 
 
-            blockchain = Blockchain(utxos, MemPool, newBlockAvailable)
+            blockchain = Blockchain(utxos, MemPool, newBlockAvailable, secondryChain)
             blockchain.startSync()
             blockchain.main()
     except Exception as e:
