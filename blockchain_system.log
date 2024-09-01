@@ -1,19 +1,16 @@
-2024-08-31 21:42:58,094 - __main__ - INFO - Starting the blockchain system...
-2024-08-31 21:42:58,094 - __main__ - INFO - Configuration loaded. Local Host: 127.0.0.1, Local Host Port: 8888, Web Port: 5900
-2024-08-31 21:42:58,107 - __main__ - INFO - Web app process started.
-2024-08-31 21:42:58,107 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 8888, isNewBlockAvailable: False
-2024-08-31 21:42:58,108 - __main__ - INFO - Sync server process started.
-2024-08-31 21:42:58,110 - __main__ - INFO - Starting sync process...
-2024-08-31 21:42:58,110 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:42:58,110 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:42:58,110 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:42:58,110 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 5555...
-2024-08-31 21:42:58,110 - Blockchain.Backend.core.network.syncManager - INFO - SERVER STARTED
-2024-08-31 21:42:58,111 - Blockchain.Backend.core.network.syncManager - INFO - [LISTENING] at 127.0.0.1:8888
-2024-08-31 21:42:58,111 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
-2024-08-31 21:42:58,111 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3
-2024-08-31 21:42:58,111 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3
-2024-08-31 21:42:58,111 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
+2024-08-31 22:39:14,745 - __main__ - INFO - Starting the blockchain system...
+2024-08-31 22:39:14,746 - __main__ - INFO - Configuration loaded. Local Host: 127.0.0.1, Local Host Port: 8888, Web Port: 5900
+2024-08-31 22:39:15,088 - __main__ - INFO - Web app process started.
+2024-08-31 22:39:15,089 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 8888, isNewBlockAvailable: False
+2024-08-31 22:39:15,091 - __main__ - INFO - Sync server process started.
+2024-08-31 22:39:15,094 - __main__ - INFO - Starting sync process...
+2024-08-31 22:39:15,094 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:39:15,094 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:39:15,094 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:39:15,094 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 5555...
+2024-08-31 22:39:15,095 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
+2024-08-31 22:39:15,095 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
+2024-08-31 22:39:15,096 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
 Traceback (most recent call last):
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 178, in startDownload
     self.connectToHost(localport, port, bindPort)
@@ -22,14 +19,13 @@ Traceback (most recent call last):
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/connection.py", line 27, in connect
     self.socket.connect((self.host, self.port))
 ConnectionRefusedError: [Errno 111] Connection refused
-2024-08-31 21:42:58,112 - __main__ - INFO - Sync with node at port 5555 completed successfully
-2024-08-31 21:42:58,112 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:42:58,112 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:42:58,112 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 3333...
-2024-08-31 21:42:58,112 - werkzeug - INFO -  * Running on http://127.0.0.1:5900/ (Press CTRL+C to quit)
-2024-08-31 21:42:58,113 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3
-2024-08-31 21:42:58,113 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3
-2024-08-31 21:42:58,113 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
+2024-08-31 22:39:15,097 - __main__ - INFO - Sync with node at port 5555 completed successfully
+2024-08-31 22:39:15,097 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:39:15,097 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:39:15,097 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 3333...
+2024-08-31 22:39:15,098 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
+2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
+2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
 Traceback (most recent call last):
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 178, in startDownload
     self.connectToHost(localport, port, bindPort)
@@ -38,13 +34,13 @@ Traceback (most recent call last):
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/connection.py", line 27, in connect
     self.socket.connect((self.host, self.port))
 ConnectionRefusedError: [Errno 111] Connection refused
-2024-08-31 21:42:58,113 - __main__ - INFO - Sync with node at port 3333 completed successfully
-2024-08-31 21:42:58,113 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:42:58,113 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:42:58,113 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 1111...
-2024-08-31 21:42:58,114 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3
-2024-08-31 21:42:58,114 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3
-2024-08-31 21:42:58,114 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
+2024-08-31 22:39:15,099 - __main__ - INFO - Sync with node at port 3333 completed successfully
+2024-08-31 22:39:15,099 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 1111...
+2024-08-31 22:39:15,100 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
+2024-08-31 22:39:15,101 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
+2024-08-31 22:39:15,101 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
 Traceback (most recent call last):
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 178, in startDownload
     self.connectToHost(localport, port, bindPort)
@@ -53,370 +49,206 @@ Traceback (most recent call last):
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/connection.py", line 27, in connect
     self.socket.connect((self.host, self.port))
 ConnectionRefusedError: [Errno 111] Connection refused
-2024-08-31 21:42:58,114 - __main__ - INFO - Sync with node at port 1111 completed successfully
-2024-08-31 21:43:02,160 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:02] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:02,179 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:02] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:02,180 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:02,183 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:02] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:04,440 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:04] "[32mGET /block?blockHeader=000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3 HTTP/1.1[0m" 302 -
-2024-08-31 21:43:04,463 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:04] "GET /block/000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3 HTTP/1.1" 200 -
-2024-08-31 21:43:04,494 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:04,495 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:04] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:04,497 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:04] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:05,744 - __main__ - INFO - Starting sync process...
-2024-08-31 21:43:05,744 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:43:05,745 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:43:05,745 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:43:05,745 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:39:15,101 - __main__ - INFO - Sync with node at port 1111 completed successfully
+2024-08-31 22:39:15,499 - werkzeug - INFO -  * Running on http://127.0.0.1:5900/ (Press CTRL+C to quit)
+2024-08-31 22:39:15,861 - Blockchain.Backend.core.network.syncManager - INFO - SERVER STARTED
+2024-08-31 22:39:15,862 - Blockchain.Backend.core.network.syncManager - INFO - [LISTENING] at 127.0.0.1:8888
+2024-08-31 22:39:15,862 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-08-31 22:50:55,984 - __main__ - INFO - Starting sync process...
+2024-08-31 22:50:55,984 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:50:55,984 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:50:55,984 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:50:55,985 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:05,745 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:43:05,745 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:43:05,745 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:50:55,985 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:50:55,985 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:50:55,985 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:05,745 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:43:05,745 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:43:05,745 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:50:55,985 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:50:55,986 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:50:55,986 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:10,750 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:10] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:10,763 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:10,768 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:10] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:10,769 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:10] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:13,144 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:13] "[32mGET /block?blockHeader=000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3 HTTP/1.1[0m" 302 -
-2024-08-31 21:43:13,148 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:13] "GET /block/000040882efd88ce24ccfc0dd8e0bf87437423677d49e60e4dc36ad8ae1bdff3 HTTP/1.1" 200 -
-2024-08-31 21:43:13,178 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:13] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:13,179 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:13] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:13,179 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:20,999 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:20] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:21,010 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:21,011 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:21] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:21,012 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:21] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:22,368 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:22] "[32mGET /block?blockHeader=0000d0dc95921c35aa7123882809b7a6d93f8c023fcb514bcc475c5b5d12ec5f HTTP/1.1[0m" 302 -
-2024-08-31 21:43:22,373 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:22] "GET /block/0000d0dc95921c35aa7123882809b7a6d93f8c023fcb514bcc475c5b5d12ec5f HTTP/1.1" 200 -
-2024-08-31 21:43:22,395 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:22,396 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:22] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:22,397 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:22] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:24,204 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:24] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:24,214 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:24,216 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:24] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:24,217 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:24] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:26,302 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:26] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:26,312 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:26,315 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:26] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:26,315 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:26] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:26,524 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:26] "[36mGET /static/images/fav.PNG HTTP/1.1[0m" 304 -
-2024-08-31 21:43:29,896 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:29] "[32mGET /block?blockHeader=000091e097aa05aa5cde31d44cf9a380be4352c2c1076b9ed8a7a33b890c9970 HTTP/1.1[0m" 302 -
-2024-08-31 21:43:29,900 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:29] "GET /block/000091e097aa05aa5cde31d44cf9a380be4352c2c1076b9ed8a7a33b890c9970 HTTP/1.1" 200 -
-2024-08-31 21:43:29,913 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:29,918 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:29] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:29,918 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:29] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:32,068 - __main__ - INFO - Starting sync process...
-2024-08-31 21:43:32,068 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:43:32,068 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:43:32,068 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:43:32,068 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:04,104 - __main__ - INFO - Starting sync process...
+2024-08-31 22:51:04,104 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:51:04,104 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:51:04,104 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:51:04,105 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:32,068 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:43:32,068 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:43:32,068 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:04,105 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:51:04,105 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:51:04,105 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:32,068 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:43:32,068 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:43:32,068 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:04,105 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:51:04,105 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:51:04,105 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:34,422 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:34] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:34,433 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:34,434 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:34] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:34,435 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:34] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:36,544 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:36] "[32mGET /block?blockHeader=000091e097aa05aa5cde31d44cf9a380be4352c2c1076b9ed8a7a33b890c9970 HTTP/1.1[0m" 302 -
-2024-08-31 21:43:36,550 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:36] "GET /block/000091e097aa05aa5cde31d44cf9a380be4352c2c1076b9ed8a7a33b890c9970 HTTP/1.1" 200 -
-2024-08-31 21:43:36,562 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:36,565 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:36] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:36,565 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:36] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:38,022 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:38] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:38,037 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:38] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:38,037 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:38,038 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:38] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:39,847 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:39] "[32mGET /block?blockHeader=0000e0b211a74fdc1f6a638b7efcdebf23e93ad4fc30111392c5efdedc6d99b8 HTTP/1.1[0m" 302 -
-2024-08-31 21:43:39,851 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:39] "GET /block/0000e0b211a74fdc1f6a638b7efcdebf23e93ad4fc30111392c5efdedc6d99b8 HTTP/1.1" 200 -
-2024-08-31 21:43:39,861 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:39,863 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:39] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:39,863 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:39] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:42,430 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:42] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:42,441 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:42,442 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:42] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:42,442 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:42] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:43,689 - __main__ - INFO - Starting sync process...
-2024-08-31 21:43:43,690 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:43:43,690 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:43:43,690 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:43:43,690 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:09,143 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "GET /wallet HTTP/1.1" 200 -
+2024-08-31 22:51:09,173 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:09,174 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:09,175 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:24,138 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "POST /wallet HTTP/1.1" 200 -
+2024-08-31 22:51:24,154 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:24,157 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:24,158 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:26,097 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "GET /mempool HTTP/1.1" 200 -
+2024-08-31 22:51:26,111 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:26,118 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:26,119 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:27,085 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "GET /memTx/d8eec970cbf984e827653fbacc6913ab4bdff84e31d89633f0c16acc1a1c58e3 HTTP/1.1" 200 -
+2024-08-31 22:51:27,097 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:27,100 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:27,101 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:31,148 - __main__ - INFO - Starting sync process...
+2024-08-31 22:51:31,148 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:51:31,148 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:51:31,148 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:51:31,149 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:43,690 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:43:43,690 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:43:43,690 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:31,149 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:51:31,149 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:51:31,149 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:43,690 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:43:43,690 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:43:43,690 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:31,149 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:51:31,149 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:51:31,149 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:43,808 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:43] "[32mGET /block?blockHeader=000090cf697089e69bc1ace9cf4e34c52fb448aaae09dc5eb081617d9c1fcd91 HTTP/1.1[0m" 302 -
-2024-08-31 21:43:43,814 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:43] "GET /block/000090cf697089e69bc1ace9cf4e34c52fb448aaae09dc5eb081617d9c1fcd91 HTTP/1.1" 200 -
-2024-08-31 21:43:43,828 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:43] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:43,828 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:43] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:43,829 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:46,304 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:46] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:46,319 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:46,320 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:46] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:46,322 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:46] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:52,261 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:52] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:52,273 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:52,274 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:52] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:52,275 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:52] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:53,376 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:53] "[32mGET /block?blockHeader=000011a134e048b85160c6474658723af0badec4e80235c6e856efb6f56e14e7 HTTP/1.1[0m" 302 -
-2024-08-31 21:43:53,390 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:53] "GET /block/000011a134e048b85160c6474658723af0badec4e80235c6e856efb6f56e14e7 HTTP/1.1" 200 -
-2024-08-31 21:43:53,457 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:53,458 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:53] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:53,458 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:53] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:56,034 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:56] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:43:56,044 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:43:56,046 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:56] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:56,047 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:43:56] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:43:59,020 - __main__ - INFO - Starting sync process...
-2024-08-31 21:43:59,021 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:43:59,021 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:43:59,021 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:43:59,021 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:44,148 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "GET /transactions HTTP/1.1" 200 -
+2024-08-31 22:51:44,159 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:44,163 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:44,163 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:45,296 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "GET /mempool HTTP/1.1" 200 -
+2024-08-31 22:51:45,308 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:45,312 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:45,314 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:46,226 - __main__ - INFO - Starting sync process...
+2024-08-31 22:51:46,226 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:51:46,226 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:51:46,226 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:51:46,227 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:59,021 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:43:59,021 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:43:59,021 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:46,227 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:51:46,227 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:51:46,227 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:43:59,021 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:43:59,021 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:43:59,021 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:46,227 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:51:46,227 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:51:46,227 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:07,792 - __main__ - INFO - Starting sync process...
-2024-08-31 21:44:07,792 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:44:07,792 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:44:07,792 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:44:07,792 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:46,794 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "GET /memTx/d8eec970cbf984e827653fbacc6913ab4bdff84e31d89633f0c16acc1a1c58e3 HTTP/1.1" 200 -
+2024-08-31 22:51:46,806 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:46,809 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:46,809 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:52,625 - __main__ - INFO - Starting sync process...
+2024-08-31 22:51:52,625 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:51:52,625 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:51:52,626 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:51:52,626 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:07,792 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:44:07,792 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:44:07,793 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:52,626 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:51:52,626 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:51:52,626 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:07,793 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:44:07,793 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:44:07,793 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:52,626 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:51:52,626 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:51:52,627 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:37,197 - __main__ - INFO - Starting sync process...
-2024-08-31 21:44:37,197 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:44:37,197 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:44:37,197 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:44:37,198 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:57,616 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "GET /mempool HTTP/1.1" 200 -
+2024-08-31 22:51:57,626 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:51:57,630 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:57,631 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:51:59,906 - __main__ - INFO - Starting sync process...
+2024-08-31 22:51:59,906 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:51:59,906 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:51:59,906 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:51:59,907 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:37,198 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:44:37,198 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:44:37,198 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:59,907 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:51:59,907 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:51:59,907 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:37,198 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:44:37,198 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:44:37,198 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:51:59,907 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:51:59,907 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:51:59,908 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:48,474 - __main__ - INFO - Starting sync process...
-2024-08-31 21:44:48,475 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:44:48,475 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:44:48,475 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:44:48,475 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:01,802 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "GET /transactions HTTP/1.1" 200 -
+2024-08-31 22:52:01,816 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:01,818 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:01,821 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:03,680 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "GET /block HTTP/1.1" 200 -
+2024-08-31 22:52:03,695 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:03,697 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:03,699 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:05,545 - __main__ - INFO - Starting sync process...
+2024-08-31 22:52:05,545 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:52:05,545 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:52:05,545 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:52:05,545 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:48,475 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:44:48,475 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:44:48,475 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:05,545 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:52:05,545 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:52:05,546 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:48,475 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:44:48,475 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:44:48,475 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:05,546 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:52:05,546 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:52:05,546 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:49,239 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:44:49] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:44:49,254 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:44:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:44:49,260 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:44:49] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:44:49,261 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:44:49] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:44:59,599 - __main__ - INFO - Starting sync process...
-2024-08-31 21:44:59,599 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:44:59,599 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:44:59,599 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:44:59,599 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:11,517 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[32mGET /block?blockHeader=000000844aa8aaa1bb04fa5848a29f199621184ab27d678bfb45612863ab0721 HTTP/1.1[0m" 302 -
+2024-08-31 22:52:11,578 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "GET /block/000000844aa8aaa1bb04fa5848a29f199621184ab27d678bfb45612863ab0721 HTTP/1.1" 200 -
+2024-08-31 22:52:11,592 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:11,594 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:11,596 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:20,965 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:20] "[32mGET /transactions/94368ad5052fa9fa65f21a83acf0e16001968084514947ef1b2189d06fd47ea0 HTTP/1.1[0m" 302 -
+2024-08-31 22:52:20,982 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:20] "GET /tx/94368ad5052fa9fa65f21a83acf0e16001968084514947ef1b2189d06fd47ea0 HTTP/1.1" 200 -
+2024-08-31 22:52:21,026 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:21,030 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:21] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:21,032 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:21] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:28,119 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "GET /mempool HTTP/1.1" 200 -
+2024-08-31 22:52:28,136 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:28,141 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:28,142 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:29,394 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "GET /transactions HTTP/1.1" 200 -
+2024-08-31 22:52:29,406 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:29,410 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:29,410 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:30,742 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "GET /block HTTP/1.1" 200 -
+2024-08-31 22:52:30,755 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:30,758 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:30,760 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:31,400 - __main__ - INFO - Starting sync process...
+2024-08-31 22:52:31,400 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:52:31,400 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:52:31,401 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:52:31,401 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:59,600 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:44:59,600 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:44:59,600 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:31,401 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:52:31,401 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:52:31,401 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:44:59,600 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:44:59,600 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:44:59,600 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:31,401 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:52:31,401 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:52:31,401 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:45:06,051 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:06,051 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:06,052 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:06,052 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:06,052 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:32,834 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[32mGET /block?blockHeader=00007ccc830819406d9102ba53ba9cb7f75b3121a33fe694fa386b2a1d858f95 HTTP/1.1[0m" 302 -
+2024-08-31 22:52:32,854 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "GET /block/00007ccc830819406d9102ba53ba9cb7f75b3121a33fe694fa386b2a1d858f95 HTTP/1.1" 200 -
+2024-08-31 22:52:32,870 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:32,873 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:32,874 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:36,196 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[32mGET /transactions/9de324f1841d76bfb5ea5da597a515a01b98db5cf634d110c909a3ae036448dc HTTP/1.1[0m" 302 -
+2024-08-31 22:52:36,213 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "GET /tx/9de324f1841d76bfb5ea5da597a515a01b98db5cf634d110c909a3ae036448dc HTTP/1.1" 200 -
+2024-08-31 22:52:36,243 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-08-31 22:52:36,246 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:36,250 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-08-31 22:52:40,278 - __main__ - INFO - Starting sync process...
+2024-08-31 22:52:40,278 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-08-31 22:52:40,279 - __main__ - INFO - Syncing with node at port 5555
+2024-08-31 22:52:40,279 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-08-31 22:52:40,279 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:45:06,052 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:06,052 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:06,052 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:40,279 - __main__ - INFO - Syncing with node at port 3333
+2024-08-31 22:52:40,279 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-08-31 22:52:40,279 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 21:45:06,052 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:06,052 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:06,052 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:11,229 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:11,229 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:11,229 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:11,229 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:11,229 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:11,230 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:11,230 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:11,230 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:11,230 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:11,230 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:11,230 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:13,695 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:13] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:45:13,709 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:13,709 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:13] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:13,710 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:13] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:16,169 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:16] "[32mGET /block?blockHeader=000077219a0a64b09c051ee5062564c728b7a6b0fad9b700ac8582efff663165 HTTP/1.1[0m" 302 -
-2024-08-31 21:45:16,182 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:16] "GET /block/000077219a0a64b09c051ee5062564c728b7a6b0fad9b700ac8582efff663165 HTTP/1.1" 200 -
-2024-08-31 21:45:16,196 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:16,199 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:16] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:16,199 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:16] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:16,265 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:16,265 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:16,266 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:16,266 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:16,266 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:16,266 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:16,266 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:16,266 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:16,266 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:16,266 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:16,267 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:19,488 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:19] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:45:19,500 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:19,502 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:19] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:19,503 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:19] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:22,113 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:22] "[32mGET /block?blockHeader=00002271b3deb412f53409ae9066fcd17fd639721a3d905fb8f28ab57204cb36 HTTP/1.1[0m" 302 -
-2024-08-31 21:45:22,123 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:22] "GET /block/00002271b3deb412f53409ae9066fcd17fd639721a3d905fb8f28ab57204cb36 HTTP/1.1" 200 -
-2024-08-31 21:45:22,165 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:22] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:22,166 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:22,166 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:22] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:23,841 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:23,842 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:23,842 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:23,842 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:23,842 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:23,842 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:23,842 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:23,842 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:23,842 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:23,842 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:23,842 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:24,207 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:24] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:45:24,220 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:24,223 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:24] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:24,223 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:24] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:25,714 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:25] "[32mGET /block?blockHeader=0000154f38511853c1667c9d202f038aa8f79688013c6e4bad3f2bd80ab190c5 HTTP/1.1[0m" 302 -
-2024-08-31 21:45:25,732 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:25] "GET /block/0000154f38511853c1667c9d202f038aa8f79688013c6e4bad3f2bd80ab190c5 HTTP/1.1" 200 -
-2024-08-31 21:45:25,789 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:25,794 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:25] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:25,794 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:25] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:27,762 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:27] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:45:27,775 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:27,778 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:27] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:27,779 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:27] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:29,847 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:29,847 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:29,848 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:29,848 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:29,848 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:29,848 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:29,848 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:29,848 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:29,848 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:29,848 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:29,848 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:29,888 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:29] "[32mGET /block?blockHeader=0000f3e8a3b9e45f3f1f924615c9b3050430a4a80e70b081359c6bde691d5627 HTTP/1.1[0m" 302 -
-2024-08-31 21:45:29,891 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:29] "GET /block/0000f3e8a3b9e45f3f1f924615c9b3050430a4a80e70b081359c6bde691d5627 HTTP/1.1" 200 -
-2024-08-31 21:45:29,901 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:29,902 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:29] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:29,903 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:29] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:34,139 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:34] "GET / HTTP/1.1" 200 -
-2024-08-31 21:45:34,152 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:34,155 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:34] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:34,155 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:34] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:35,677 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:35] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:45:35,690 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:35,692 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:35] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:35,693 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:35] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:35,820 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:35,820 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:35,820 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:35,820 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:35,820 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:35,820 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:35,820 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:35,820 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:35,821 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:35,821 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:35,821 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:36,961 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:36] "[32mGET /block?blockHeader=00006c6fddb99eecb57c4da400e35f571feeb2a2561b9bf73f3ac260c15641c4 HTTP/1.1[0m" 302 -
-2024-08-31 21:45:36,990 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:36] "GET /block/00006c6fddb99eecb57c4da400e35f571feeb2a2561b9bf73f3ac260c15641c4 HTTP/1.1" 200 -
-2024-08-31 21:45:37,003 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:37,004 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:37] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:37,005 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:37] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:40,792 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:40] "GET /block HTTP/1.1" 200 -
-2024-08-31 21:45:40,804 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 21:45:40,807 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:40] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:40,807 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 21:45:40] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 21:45:41,812 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:41,813 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:41,813 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:41,813 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:41,813 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:41,813 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:41,813 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:41,813 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:41,813 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:41,813 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:41,813 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:47,586 - __main__ - INFO - Starting sync process...
-2024-08-31 21:45:47,586 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 21:45:47,586 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 21:45:47,586 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 21:45:47,586 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:47,586 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 21:45:47,586 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 21:45:47,586 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 21:45:47,587 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 21:45:47,587 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 21:45:47,587 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-08-31 22:52:40,279 - __main__ - INFO - Syncing with node at port 1111
+2024-08-31 22:52:40,279 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-08-31 22:52:40,279 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused

@@ -9,7 +9,7 @@ from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.util.util import hash256, target_to_bits, bits_to_target
 from Blockchain.Backend.core.database.database import BlockchainDB, NodeDB
-from Blockchain.Backend.core.Tx import CoinbaseTx
+from Blockchain.Backend.core.Tx import CoinbaseTx, Tx
 from Blockchain.Backend.util.util import merkle_root
 from multiprocessing import Process, Manager
 from Blockchain.Frontend.run import main
@@ -163,7 +163,28 @@ class Blockchain:
                 self.output_amount += tx_out.amount
 
         self.fee = self.input_amount - self.output_amount
+    
+    def buildUTXOS(self):
+        allTxs = {}
+        blocks = BlockchainDB().read()
 
+        for block in blocks:
+            for tx in block['Txs']:
+                allTxs[tx['TxId']] = tx
+            
+        for block in blocks:
+            for tx in block['Txs']:
+                for txin in tx['tx_ins']:
+                    if txin['prev_tx'] != "0000000000000000000000000000000000000000000000000000000000000000":
+                        if len(allTxs[txin['prev_tx']]['tx_outs']) < 2:
+                            del allTxs[txin['prev_tx']]
+                        else:
+                            txOut = allTxs[txin['prev_tx']]['tx_outs']
+                            txOut.pop(txin['prev_index'])
+        
+        for tx in allTxs:
+            self.utxos[tx] = Tx.to_obj(allTxs[tx])
+    
     def settargetWhileBooting(self):
         bits, timestamp = self.getTargetDifficultyAndTimestamp()
         self.bits = bytes.fromhex(bits)
@@ -352,6 +373,7 @@ if __name__ == "__main__":
             blockchain = Blockchain(utxos, MemPool, newBlockAvailable, secondryChain)
             blockchain.settargetWhileBooting()
             blockchain.startSync()
+            blockchain.buildUTXOS()
             blockchain.main()
     except Exception as e:
         logger.error(f"Exception in main execution block: {e}", exc_info=True)
