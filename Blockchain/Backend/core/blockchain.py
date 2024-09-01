@@ -7,7 +7,7 @@ import copy
 import configparser
 from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
-from Blockchain.Backend.util.util import hash256, target_to_bits
+from Blockchain.Backend.util.util import hash256, target_to_bits, bits_to_target
 from Blockchain.Backend.core.database.database import BlockchainDB, NodeDB
 from Blockchain.Backend.core.Tx import CoinbaseTx
 from Blockchain.Backend.util.util import merkle_root
@@ -19,6 +19,14 @@ import time
 ZERO_HASH = '0' * 64
 VERSION = 1
 INITIAL_TARGET = 0x0000FFFF00000000000000000000000000000000000000000000000000000000
+MAX_TARGET     = 0x0000ffff00000000000000000000000000000000000000000000000000000000
+"""
+# Calculate new Target to keep our Block mine time under 20 seconds
+# Reset Block Difficulty after every 10 Blocks
+"""
+AVERAGE_BLOCK_MINE_TIME = 20
+RESET_DIFFICULTY_AFTER_BLOCKS = 10
+AVERAGE_MINE_TIME = AVERAGE_BLOCK_MINE_TIME * RESET_DIFFICULTY_AFTER_BLOCKS
 
 # Configure the root logger
 logging.basicConfig(
@@ -156,6 +164,39 @@ class Blockchain:
 
         self.fee = self.input_amount - self.output_amount
 
+    def settargetWhileBooting(self):
+        bits, timestamp = self.getTargetDifficultyAndTimestamp()
+        self.bits = bytes.fromhex(bits)
+        self.current_target = bits_to_target(self.bits)
+
+    def getTargetDifficultyAndTimestamp(self, BlockHeight = None):
+        if BlockHeight:
+            blocks = BlockchainDB().read()
+            bits = blocks[BlockHeight]['BlockHeader']['bits']
+            timestamp = blocks[BlockHeight]['BlockHeader']['timestamp']
+        else:
+            block = BlockchainDB().lastBlock()
+            bits = block['BlockHeader']['bits']
+            timestamp = block['BlockHeader']['timestamp']
+        return bits, timestamp
+
+    def adjustTargetDifficulty(self, BlockHeight):
+        if BlockHeight % 10 == 0:
+            bits, timestamp = self.getTargetDifficultyAndTimestamp(BlockHeight - 10)
+            Lastbits, lastTimestamp = self.getTargetDifficultyAndTimestamp()
+
+            lastTarget = bits_to_target(bytes.fromhex(bits))
+            AverageBlockMineTime = lastTimestamp - timestamp
+            timeRatio = AverageBlockMineTime / AVERAGE_MINE_TIME
+
+            NEW_TARGET = int(format(int(lastTarget * timeRatio)))
+
+            if NEW_TARGET > MAX_TARGET:
+                NEW_TARGET = MAX_TARGET
+            
+            self.bits = target_to_bits(NEW_TARGET)
+            self.current_target = NEW_TARGET
+
     def BroadcastBlock(self, block):
         self.startSync(block)       
 
@@ -238,6 +279,7 @@ class Blockchain:
         self.addTransactionsInBlock.insert(0, coinbaseTx)
         
         merkleRoot = merkle_root(self.TxIds)[::-1].hex()
+        self.adjustTargetDifficulty(BlockHeight)
         blockheader = BlockHeader(VERSION, prevBlockHash, merkleRoot, timestamp, self.bits, nonce=0)
         competitionOver = blockheader.mine(self.current_target, self.newBlockAvailable)
 
@@ -308,6 +350,7 @@ if __name__ == "__main__":
 
 
             blockchain = Blockchain(utxos, MemPool, newBlockAvailable, secondryChain)
+            blockchain.settargetWhileBooting()
             blockchain.startSync()
             blockchain.main()
     except Exception as e:
