@@ -128,6 +128,7 @@ class Blockchain:
         self.remove_spent_transactions = []
 
         for tx in self.MemPool:
+            self.MemPool[tx].TxId = tx
             self.TxIds.append(bytes.fromhex(tx))
             self.addTransactionsInBlock.append(self.MemPool[tx])
             self.Blocksize += len(self.MemPool[tx].serialize())
@@ -240,11 +241,23 @@ class Blockchain:
                 for idx, tx in enumerate(block.Txs):
                     self.utxos[tx.id()] = tx.serialize()
                     block.Txs[idx].TxId = tx.id()
+
+                    """ Remove Spent Transactions 
+                    for txin in tx.tx_ins:
+                        if txin.prev_tx.hex() in self.utxos:
+                            del self.utxos[txin.prev_tx.hex()]"""
+
+                    if tx.id() in self.MemPool:
+                        del self.MemPool[tx.id()]
+
                     block.Txs[idx] = tx.to_dict()
 
                 block.BlockHeader.to_hex()
                 BlockchainDB().write([block.to_dict()])
             else:
+                """Resolve the Conflict between the miners"""
+                orphanTxs = {}
+                validTxs = {}                
                 if self.secondryChain:
                     addBlocks = []
                     addBlocks.append(block) ###
@@ -268,6 +281,9 @@ class Blockchain:
                                 if tx['TxId'] in self.utxos:
                                     del self.utxos[tx['TxId']]
 
+                                    """ Don't Include COINBASE TX because it didn't come from MEMPOOL"""
+                                    if tx['tx_ins'][0]['prev_tx'] != "0000000000000000000000000000000000000000000000000000000000000000":
+                                        orphanTxs[tx['TxId']] = tx 
 
                         BlockchainDB().update(blockchain)
 
@@ -277,9 +293,18 @@ class Blockchain:
 
                             for index, tx in enumerate(validBlock.Txs):
                                 validBlock.Txs[index].TxId = tx.id()
+
+                                if tx.tx_ins[0].prev_tx.hex() != "0000000000000000000000000000000000000000000000000000000000000000":
+                                    validTxs[validBlock.Txs[index].TxId] = tx
+
                                 validBlock.Txs[index] = tx.to_dict()
 
                             BlockchainDB().write([validBlock.to_dict()])
+
+                        """ Add Transactoins Back to MemPool """
+                        for TxId in orphanTxs:
+                            if TxId not in validTxs:
+                                self.MemPool[TxId] = Tx.to_obj(orphanTxs[TxId])                            
 
                 self.secondryChain[newblock] = block
 
@@ -359,12 +384,12 @@ if __name__ == "__main__":
             newBlockAvailable = manager.dict()
             secondryChain = manager.dict()
 
-            webapp = Process(target= main, args= (utxos, MemPool, webport))
+            webapp = Process(target= main, args= (utxos, MemPool, webport, localHostPort))
             webapp.start()
             logger.info("Web app process started.")
 
             """ Start Server and Listen for miner requests """
-            sync = syncManager(localHost, localHostPort, newBlockAvailable, secondryChain)
+            sync = syncManager(localHost, localHostPort, newBlockAvailable, secondryChain, MemPool)
             startServer = Process(target = sync.spinUpTheServer)
             startServer.start()
             logger.info("Sync server process started.")

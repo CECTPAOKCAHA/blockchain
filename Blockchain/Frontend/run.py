@@ -2,10 +2,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 from Blockchain.client.sendBTC import SendBTC 
 from Blockchain.Backend.core.Tx import Tx
-from Blockchain.Backend.core.database.database import BlockchainDB
+from Blockchain.Backend.core.database.database import BlockchainDB, NodeDB
 from Blockchain.Backend.util.util import encode_base58, decode_base58
+from Blockchain.Backend.core.network.syncManager import syncManager
 from hashlib import sha256
 from flask_qrcode import QRcode
+import logging
+
+# Create a logger instance for this module
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 qrcode = QRcode(app)
@@ -215,15 +220,36 @@ def wallet():
 
             if verified:
                 MEMPOOL[TxObj.TxId] = TxObj
+                broadcastTx(TxObj)
                 message = "Transaction added in memory pool"                                       
 
     return render_template('wallet.html', message = message)
 
-def main(utxos, MemPool, port):
+def broadcastTx(TxObj, localHostPort = None):
+    try:
+        node = NodeDB()
+        portList = node.read()
+
+        for port in portList:
+            if localHostPort != port:
+                sync = syncManager('127.0.0.1', port)
+                try:
+                    sync.connectToHost(localHostPort - 1, port)
+                    sync.publishTx(TxObj)
+                
+                except Exception as err:
+                    logger.error(f'Error while publishing or Downloading a Blockchain\n{err}')
+                
+    except Exception as err:
+        pass
+
+def main(utxos, MemPool, port, localPort):
     global UTXOS
     global MEMPOOL
+    global localHostPort
     UTXOS = utxos
     MEMPOOL = MemPool
+    localHostPort = localPort
     app.run(port = port)
 
 

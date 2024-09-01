@@ -1,254 +1,497 @@
-2024-08-31 22:39:14,745 - __main__ - INFO - Starting the blockchain system...
-2024-08-31 22:39:14,746 - __main__ - INFO - Configuration loaded. Local Host: 127.0.0.1, Local Host Port: 8888, Web Port: 5900
-2024-08-31 22:39:15,088 - __main__ - INFO - Web app process started.
-2024-08-31 22:39:15,089 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 8888, isNewBlockAvailable: False
-2024-08-31 22:39:15,091 - __main__ - INFO - Sync server process started.
-2024-08-31 22:39:15,094 - __main__ - INFO - Starting sync process...
-2024-08-31 22:39:15,094 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:39:15,094 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:39:15,094 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:39:15,094 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 5555...
-2024-08-31 22:39:15,095 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
-2024-08-31 22:39:15,095 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
-2024-08-31 22:39:15,096 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
+2024-09-01 16:03:39,770 - __main__ - INFO - Starting the blockchain system...
+2024-09-01 16:03:39,771 - __main__ - INFO - Configuration loaded. Local Host: 127.0.0.1, Local Host Port: 8888, Web Port: 5900
+2024-09-01 16:03:39,815 - __main__ - INFO - Web app process started.
+2024-09-01 16:03:39,815 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 8888, isNewBlockAvailable: False
+2024-09-01 16:03:39,817 - __main__ - INFO - Sync server process started.
+2024-09-01 16:03:39,819 - __main__ - INFO - Starting sync process...
+2024-09-01 16:03:39,819 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:03:39,819 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:03:39,819 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:03:39,819 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 5555...
+2024-09-01 16:03:39,819 - Blockchain.Backend.core.network.syncManager - INFO - SERVER STARTED
+2024-09-01 16:03:39,820 - Blockchain.Backend.core.network.syncManager - INFO - [LISTENING] at 127.0.0.1:8888
+2024-09-01 16:03:39,820 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:03:39,821 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f2019
+2024-09-01 16:03:39,821 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f2019
+2024-09-01 16:03:39,822 - werkzeug - INFO -  * Running on http://127.0.0.1:5900/ (Press CTRL+C to quit)
+2024-09-01 16:03:39,821 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
 Traceback (most recent call last):
-  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 178, in startDownload
+  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 188, in startDownload
     self.connectToHost(localport, port, bindPort)
-  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 151, in connectToHost
+  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 158, in connectToHost
     self.socket = self.connect.connect(localport, bindPort)
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/connection.py", line 27, in connect
     self.socket.connect((self.host, self.port))
 ConnectionRefusedError: [Errno 111] Connection refused
-2024-08-31 22:39:15,097 - __main__ - INFO - Sync with node at port 5555 completed successfully
-2024-08-31 22:39:15,097 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:39:15,097 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:39:15,097 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 3333...
-2024-08-31 22:39:15,098 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
-2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
-2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
+2024-09-01 16:03:39,822 - __main__ - INFO - Sync with node at port 5555 completed successfully
+2024-09-01 16:03:39,822 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:03:39,822 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:03:39,822 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 3333...
+2024-09-01 16:03:39,823 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f2019
+2024-09-01 16:03:39,823 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f2019
+2024-09-01 16:03:39,823 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
 Traceback (most recent call last):
-  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 178, in startDownload
+  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 188, in startDownload
     self.connectToHost(localport, port, bindPort)
-  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 151, in connectToHost
+  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 158, in connectToHost
     self.socket = self.connect.connect(localport, bindPort)
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/connection.py", line 27, in connect
     self.socket.connect((self.host, self.port))
 ConnectionRefusedError: [Errno 111] Connection refused
-2024-08-31 22:39:15,099 - __main__ - INFO - Sync with node at port 3333 completed successfully
-2024-08-31 22:39:15,099 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:39:15,099 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 1111...
-2024-08-31 22:39:15,100 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
-2024-08-31 22:39:15,101 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 000054ec2ee91e00b00c016cdd508085aa684d02f062b9ab9458d4eda8f4a065
-2024-08-31 22:39:15,101 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
+2024-09-01 16:03:39,823 - __main__ - INFO - Sync with node at port 3333 completed successfully
+2024-09-01 16:03:39,823 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:03:39,824 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:03:39,824 - Blockchain.Backend.core.network.syncManager - INFO - Starting download from node at port 1111...
+2024-09-01 16:03:39,825 - Blockchain.Backend.core.network.syncManager - INFO - Last block found with header: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f2019
+2024-09-01 16:03:39,825 - Blockchain.Backend.core.network.syncManager - DEBUG - Requesting headers starting from block: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f2019
+2024-09-01 16:03:39,825 - Blockchain.Backend.core.network.syncManager - ERROR - Exception occurred in startDownload: [Errno 111] Connection refused
 Traceback (most recent call last):
-  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 178, in startDownload
+  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 188, in startDownload
     self.connectToHost(localport, port, bindPort)
-  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 151, in connectToHost
+  File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/syncManager.py", line 158, in connectToHost
     self.socket = self.connect.connect(localport, bindPort)
   File "/home/oxana/Dropbox/study/MedSchool/AU/COMP498/blockchain-udemy-adv/Blockchain/Backend/core/network/connection.py", line 27, in connect
     self.socket.connect((self.host, self.port))
 ConnectionRefusedError: [Errno 111] Connection refused
-2024-08-31 22:39:15,101 - __main__ - INFO - Sync with node at port 1111 completed successfully
-2024-08-31 22:39:15,499 - werkzeug - INFO -  * Running on http://127.0.0.1:5900/ (Press CTRL+C to quit)
-2024-08-31 22:39:15,861 - Blockchain.Backend.core.network.syncManager - INFO - SERVER STARTED
-2024-08-31 22:39:15,862 - Blockchain.Backend.core.network.syncManager - INFO - [LISTENING] at 127.0.0.1:8888
-2024-08-31 22:39:15,862 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
-2024-08-31 22:50:55,984 - __main__ - INFO - Starting sync process...
-2024-08-31 22:50:55,984 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:50:55,984 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:50:55,984 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:50:55,985 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:03:39,825 - __main__ - INFO - Sync with node at port 1111 completed successfully
+2024-09-01 16:03:52,340 - __main__ - INFO - Starting sync process...
+2024-09-01 16:03:52,341 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:03:52,341 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:03:52,341 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:03:52,341 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:50:55,985 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:50:55,985 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:50:55,985 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:03:52,341 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:03:52,341 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:03:52,341 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:50:55,985 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:50:55,986 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:50:55,986 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:03:52,341 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:03:52,341 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:03:52,341 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:04,104 - __main__ - INFO - Starting sync process...
-2024-08-31 22:51:04,104 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:51:04,104 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:51:04,104 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:51:04,105 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:03:53,585 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 5554)
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'requestBlock'
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 64
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 6d0d6815
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - DEBUG - Payload read: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f20190000000000000000000000000000000000000000000000000000000000000000
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 6d0d6815
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:03:53,586 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'requestBlock'
+2024-09-01 16:03:53,587 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to sendBlockToRequestor
+2024-09-01 16:03:53,587 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to fetchBlocksFromBlockchain()
+2024-09-01 16:03:53,588 - Blockchain.Backend.core.network.syncManager - INFO - fetched 0 blocks
+2024-09-01 16:03:53,588 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to send sendBlock()
+2024-09-01 16:03:53,589 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'portlist'
+2024-09-01 16:03:53,589 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to sendFinishedMessage()
+2024-09-01 16:03:53,590 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'Finished'
+2024-09-01 16:03:53,590 - Blockchain.Backend.core.network.syncManager - INFO - All blocks sent.
+2024-09-01 16:03:53,590 - Blockchain.Backend.core.network.syncManager - INFO - Start Block is b'\x00\x00\x15\x9eX\x8cZ\xf8tT\x99\xba\xdb\xafe\tVc\xe8\x17\xa3\xcc\xda\x99\xfcC\x13\xb3\x03\x8f \x19' 
+ End Block is b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 3332)
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'requestBlock'
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 64
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 6d0d6815
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - DEBUG - Payload read: 0000159e588c5af8745499badbaf65095663e817a3ccda99fc4313b3038f20190000000000000000000000000000000000000000000000000000000000000000
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 6d0d6815
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:03:56,370 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'requestBlock'
+2024-09-01 16:03:56,371 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to sendBlockToRequestor
+2024-09-01 16:03:56,371 - Blockchain.Backend.core.network.syncManager - DEBUG - Trying to fetchBlocksFromBlockchain()
+2024-09-01 16:03:56,373 - Blockchain.Backend.core.network.syncManager - INFO - fetched 0 blocks
+2024-09-01 16:03:56,373 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to send sendBlock()
+2024-09-01 16:03:56,374 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'portlist'
+2024-09-01 16:03:56,374 - Blockchain.Backend.core.network.syncManager - DEBUG - trying to sendFinishedMessage()
+2024-09-01 16:03:56,375 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'Finished'
+2024-09-01 16:03:56,375 - Blockchain.Backend.core.network.syncManager - INFO - All blocks sent.
+2024-09-01 16:03:56,375 - Blockchain.Backend.core.network.syncManager - INFO - Start Block is b'\x00\x00\x15\x9eX\x8cZ\xf8tT\x99\xba\xdb\xafe\tVc\xe8\x17\xa3\xcc\xda\x99\xfcC\x13\xb3\x03\x8f \x19' 
+ End Block is b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+2024-09-01 16:03:59,035 - __main__ - INFO - Starting sync process...
+2024-09-01 16:03:59,036 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:03:59,036 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:03:59,036 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:03:59,036 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:03:59,036 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:03:59,036 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:03:59,036 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:03:59,036 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:03:59,036 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:03:59,037 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:04,105 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:51:04,105 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:51:04,105 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:04:03,524 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 52882)
+2024-09-01 16:04:03,524 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:03,524 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:03,524 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:03,524 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:03,525 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:03,525 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:03,525 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: e17e9386
+2024-09-01 16:04:03,525 - Blockchain.Backend.core.network.network - DEBUG - Payload read: ca000000a70000000100000019208f03b31343fc99dacca317e863560965afdbba995474f85a8c589e15000028b0d73cd94e2565a184d4becbd4c9b5dbfc07f52a6606d3cc26a3ba5781b0f7cfe4d466f98e621ee98801000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201caffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:03,525 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: e17e9386
+2024-09-01 16:04:03,525 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:03,525 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:03,526 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 202
+2024-09-01 16:04:05,181 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 52884)
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 31e905d1
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - DEBUG - Payload read: cb000000a70000000100000003d34a02a95069a801fdd42a75e35bab4e45cf0c05e2b9cd7ebb50918042000066d3dc2fd7c87f5d0deab9d19d7f123d76ea95f360128c2f37d9d1540a2730fad3e4d466f98e621e1e9200000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201cbffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 31e905d1
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:05,182 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:05,183 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 203
+2024-09-01 16:04:05,668 - __main__ - INFO - Starting sync process...
+2024-09-01 16:04:05,669 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:04:05,669 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:04:05,669 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:04:05,669 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:05,669 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:04:05,669 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:04:05,669 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:05,669 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:04:05,670 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:04:05,670 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:04,105 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:51:04,105 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:51:04,105 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:04:11,214 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 45558)
+2024-09-01 16:04:11,214 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:11,214 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:11,214 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:11,214 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:11,214 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:11,214 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:11,215 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: fb921b1a
+2024-09-01 16:04:11,215 - Blockchain.Backend.core.network.network - DEBUG - Payload read: cc000000a700000001000000befeb669ef61e8a5e3f3c9df010698d47622ff4137e5f8feb5f2c725b5d100002b3a0823e975d3dc4301348a406b83a2c66a4cda6d2158cd7208f0c4bbcefbc8dae4d466f98e621e8d4e00000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201ccffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:11,215 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: fb921b1a
+2024-09-01 16:04:11,215 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:11,215 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:11,216 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 204
+2024-09-01 16:04:11,417 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:11] "GET /block HTTP/1.1" 200 -
+2024-09-01 16:04:11,429 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-09-01 16:04:11,431 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:11] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-09-01 16:04:11,432 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:11] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-09-01 16:04:11,448 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:11] "[36mGET /static/images/wal5.jpg HTTP/1.1[0m" 304 -
+2024-09-01 16:04:16,060 - __main__ - INFO - Starting sync process...
+2024-09-01 16:04:16,060 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:04:16,060 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:04:16,060 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:04:16,060 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:16,060 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:04:16,061 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:04:16,061 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:16,061 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:04:16,061 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:04:16,061 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:09,143 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "GET /wallet HTTP/1.1" 200 -
-2024-08-31 22:51:09,173 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:09,174 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:09,175 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:09] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:24,138 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "POST /wallet HTTP/1.1" 200 -
-2024-08-31 22:51:24,154 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:24,157 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:24,158 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:24] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:26,097 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "GET /mempool HTTP/1.1" 200 -
-2024-08-31 22:51:26,111 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:26,118 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:26,119 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:26] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:27,085 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "GET /memTx/d8eec970cbf984e827653fbacc6913ab4bdff84e31d89633f0c16acc1a1c58e3 HTTP/1.1" 200 -
-2024-08-31 22:51:27,097 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:27,100 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:27,101 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:27] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:31,148 - __main__ - INFO - Starting sync process...
-2024-08-31 22:51:31,148 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:51:31,148 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:51:31,148 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:51:31,149 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:04:19,169 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 32924)
+2024-09-01 16:04:19,169 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:19,169 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 29864ec0
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - DEBUG - Payload read: cd000000a70000000100000044f05dd6b52c39ce2cbaaebe1284206b6f898bb81525751240fd3cd2f4320000ca2622b8ef15b749dbfe28f8deb7ff78caef7cd1e6d5b9b4f955cc8ccd6cba44e0e4d466f98e621eef1701000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201cdffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 29864ec0
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:19,170 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:19,171 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 205
+2024-09-01 16:04:22,066 - __main__ - INFO - Starting sync process...
+2024-09-01 16:04:22,067 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:04:22,067 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:04:22,067 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:04:22,067 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:22,067 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:04:22,067 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:04:22,067 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:22,067 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:04:22,067 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:04:22,068 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:31,149 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:51:31,149 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:51:31,149 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:04:29,767 - __main__ - INFO - Starting sync process...
+2024-09-01 16:04:29,767 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:04:29,767 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:04:29,767 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:04:29,767 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:29,768 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:04:29,768 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:04:29,768 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:29,768 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:04:29,768 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:04:29,768 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:31,149 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:51:31,149 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:51:31,149 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:04:31,282 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:31] "GET /block HTTP/1.1" 200 -
+2024-09-01 16:04:31,292 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-09-01 16:04:31,296 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:31] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-09-01 16:04:31,297 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:04:31] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-09-01 16:04:45,874 - __main__ - INFO - Starting sync process...
+2024-09-01 16:04:45,874 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:04:45,874 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:04:45,874 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:04:45,874 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:45,874 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:04:45,874 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:04:45,874 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:45,875 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:04:45,875 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:04:45,875 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:44,148 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "GET /transactions HTTP/1.1" 200 -
-2024-08-31 22:51:44,159 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:44,163 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:44,163 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:44] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:45,296 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "GET /mempool HTTP/1.1" 200 -
-2024-08-31 22:51:45,308 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:45,312 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:45,314 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:45] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:46,226 - __main__ - INFO - Starting sync process...
-2024-08-31 22:51:46,226 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:51:46,226 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:51:46,226 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:51:46,227 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:04:46,479 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 40620)
+2024-09-01 16:04:46,479 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:46,479 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:46,479 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:46,479 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:46,480 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:46,480 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:46,480 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 53a50376
+2024-09-01 16:04:46,480 - Blockchain.Backend.core.network.network - DEBUG - Payload read: ce000000a700000001000000b8f77409cd8c92ecf5e403191874765d6d43b08a8e4c8005fd35d440a6100000dac74801791485f30e5850a8f845f7d78dcd17a376f483fe429abb5d0b53e933fde4d466f98e621ebd3200000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201ceffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:46,480 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 53a50376
+2024-09-01 16:04:46,480 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:46,480 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:46,481 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 206
+2024-09-01 16:04:46,556 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 40634)
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: d0fe6ae7
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - DEBUG - Payload read: cf000000a7000000010000005b10fd92fdd13d741b5ebd3e78edb3ec06838f28d4b987e9bfc489adf4f400008a65f09d5673bb76477d69bce0ecfabfb1dde61bd8dd43a01419f2379fe25bbcfee4d466f98e621ee30600000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201cfffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: d0fe6ae7
+2024-09-01 16:04:46,557 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:46,558 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:46,558 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 207
+2024-09-01 16:04:55,742 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 46566)
+2024-09-01 16:04:55,742 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:55,742 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:55,742 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: dcde096d
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d0000000a7000000010000002574e083720ce29a3f5e23df542d09a9baf96551e84b488f8899de6b085200002783d07d768fbf6b7adac8cbd4cae52bf59e03ec2ebf2dece248cd7aec3ef20903e5d466f98e621eae3f01000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d0ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: dcde096d
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:55,743 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:55,744 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 208
+2024-09-01 16:04:57,039 - __main__ - INFO - Starting sync process...
+2024-09-01 16:04:57,039 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:04:57,039 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:04:57,039 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:04:57,040 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:57,040 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:04:57,040 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:04:57,040 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:57,040 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:04:57,040 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:04:57,040 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:46,227 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:51:46,227 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:51:46,227 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:04:57,125 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 46580)
+2024-09-01 16:04:57,125 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:04:57,125 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:04:57,125 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 65fe6e2a
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d1000000a7000000010000002c25b0255817fbf166df316e664404a7962641912e9e89654c87f89cdf320000adcbfd5824926728f09572632eb2fc492acb0e0648bfe6aa0f0d984a045c1a1209e5d466f98e621ed40600000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d1ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 65fe6e2a
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:04:57,126 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:04:57,127 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 209
+2024-09-01 16:05:01,240 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:01] "GET / HTTP/1.1" 200 -
+2024-09-01 16:05:01,290 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 35032)
+2024-09-01 16:05:01,291 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:01,291 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:01,291 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:01,291 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:01,292 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:01,292 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:01,292 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: fe35c45f
+2024-09-01 16:05:01,292 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d2000000a700000001000000ac3afcf98dd334d4adc3eac9c87edc4def8dc3e67f68cd1e27bbbab6e2e000001c357b28ae1c57e4e28d0ae9c80bfdf08263947d071ef85814b08e79a839ee150ce5d466ffff001f152e00000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d2ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:01,292 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: fe35c45f
+2024-09-01 16:05:01,292 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:01,292 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:01,293 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 210
+2024-09-01 16:05:01,358 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-09-01 16:05:01,363 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:01] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:01,363 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:01] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:01,364 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:01] "[36mGET /static/images/wal5.jpg HTTP/1.1[0m" 304 -
+2024-09-01 16:05:02,776 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:02] "GET /block HTTP/1.1" 200 -
+2024-09-01 16:05:02,785 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-09-01 16:05:02,787 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:02] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:02,787 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:02] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:03,012 - __main__ - INFO - Starting sync process...
+2024-09-01 16:05:03,013 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:05:03,013 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:05:03,013 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:05:03,013 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:03,013 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:05:03,013 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:05:03,013 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:03,013 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:05:03,013 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:05:03,014 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:46,227 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:51:46,227 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:51:46,227 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:05:07,514 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 35042)
+2024-09-01 16:05:07,514 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:07,514 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:07,514 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:07,514 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:07,514 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:07,515 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:07,515 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: ba442a84
+2024-09-01 16:05:07,515 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d4000000a70000000100000010cd0aa89a09582e8a3472ed41377c95a65113342efb5c551e5843e7c9280000d5a028590cac1bb15d1a62947c7579bb9393e7f10e85b19de2540f9757b9061d0fe5d466ffff001fbaa401000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d4ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:07,515 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: ba442a84
+2024-09-01 16:05:07,515 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:07,515 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:07,516 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 212
+2024-09-01 16:05:10,982 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 53674)
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 5906d047
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d5000000a700000001000000f57f26612d9481ac6658a24ca805f78705153acdf885e940c81ef28a67a9000015e8a04cc5bec376f483adc0021df6fdcc26fcdd9ccbaed3fa74cedc080fbedc13e5d466ffff001f0c3501000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d5ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 5906d047
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:10,983 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:10,984 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 213
+2024-09-01 16:05:12,064 - __main__ - INFO - Starting sync process...
+2024-09-01 16:05:12,064 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:05:12,064 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:05:12,064 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:05:12,064 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:12,064 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:05:12,064 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:05:12,065 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:12,065 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:05:12,065 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:05:12,065 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:46,794 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "GET /memTx/d8eec970cbf984e827653fbacc6913ab4bdff84e31d89633f0c16acc1a1c58e3 HTTP/1.1" 200 -
-2024-08-31 22:51:46,806 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:46,809 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:46,809 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:46] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:52,625 - __main__ - INFO - Starting sync process...
-2024-08-31 22:51:52,625 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:51:52,625 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:51:52,626 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:51:52,626 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 53690)
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:12,747 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: d3cf7af3
+2024-09-01 16:05:12,748 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d7000000a700000001000000503ee9baa3eda6780dec61cc736fb681b984dcc9add91face4efc309cd1a000019526b77b88271cdedde2f99051cf7606c82d8a187f5ac2fadb0c8f1cc14f2b818e5d466ffff001f601200000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d7ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:12,748 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: d3cf7af3
+2024-09-01 16:05:12,748 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:12,748 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:12,748 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 215
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 60752)
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: fee962e4
+2024-09-01 16:05:19,061 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d8000000a7000000010000002e70ee2a1c19c21e08b8510f0c2e6d7f78da1232866c71e9b30ac08ca1440000bf4af072ad7d9816a956cda5ea34385368517479c12144e8af6c8903a62ced891ce5d466ffff001fa5fc00000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d8ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:19,062 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: fee962e4
+2024-09-01 16:05:19,062 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:19,062 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:19,063 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 216
+2024-09-01 16:05:20,262 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:20] "GET /block HTTP/1.1" 200 -
+2024-09-01 16:05:20,273 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-09-01 16:05:20,275 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:20] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:20,275 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:20] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:20,481 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 60762)
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: a830f34e
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - DEBUG - Payload read: d9000000a700000001000000649ea3460f991adafc904c51fda8562dc682610f523cd203297928fcb6b30000eb4d67d190580126264aab39b601d08f52a6e0579fd0f09fc8ec8c8d67baf6be1fe5d466ffff001fd57900000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201d9ffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: a830f34e
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:20,482 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:20,483 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 217
+2024-09-01 16:05:23,664 - __main__ - INFO - Starting sync process...
+2024-09-01 16:05:23,664 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:05:23,664 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:05:23,664 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:05:23,664 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:23,664 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:05:23,664 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:05:23,665 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:23,665 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:05:23,665 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:05:23,665 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:52,626 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:51:52,626 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:51:52,626 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 60778)
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:28,203 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: e0b4c20f
+2024-09-01 16:05:28,204 - Blockchain.Backend.core.network.network - DEBUG - Payload read: db000000a700000001000000b7e77e70178cbdfc1eb0ad9da083047518a5c224ec749f9a0bae3e76ca9600001a63fda6385ace0a9a8be712988383651a03defa7f656872a005d9c45737836e24e5d466ffff001fd57501000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201dbffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:28,204 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: e0b4c20f
+2024-09-01 16:05:28,204 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:28,204 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:28,205 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 219
+2024-09-01 16:05:41,502 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 35104)
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: ea5462ea
+2024-09-01 16:05:41,503 - Blockchain.Backend.core.network.network - DEBUG - Payload read: dc000000a7000000010000000c005ba1826a4892d4b6ff0b899b87cd78e9624e078dcd921ae2c737a98c000022044152b1f83644ee53ce69629e87be7eb27b72f0f389a306cfac7afde3541028e5d46633b81e1e960404000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201dcffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:05:41,504 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: ea5462ea
+2024-09-01 16:05:41,504 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:05:41,504 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:41,505 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 220
+2024-09-01 16:05:41,806 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:41] "GET /block HTTP/1.1" 200 -
+2024-09-01 16:05:41,816 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-09-01 16:05:41,817 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:41] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:41,818 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:41] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:42,308 - __main__ - INFO - Starting sync process...
+2024-09-01 16:05:42,308 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
+2024-09-01 16:05:42,308 - __main__ - INFO - Syncing with node at port 5555
+2024-09-01 16:05:42,308 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
+2024-09-01 16:05:42,308 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:42,309 - __main__ - INFO - Syncing with node at port 3333
+2024-09-01 16:05:42,309 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
+2024-09-01 16:05:42,309 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:05:42,309 - __main__ - INFO - Syncing with node at port 1111
+2024-09-01 16:05:42,309 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
+2024-09-01 16:05:42,309 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
 [Errno 111] Connection refused
-2024-08-31 22:51:52,626 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:51:52,626 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:51:52,627 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:51:57,616 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "GET /mempool HTTP/1.1" 200 -
-2024-08-31 22:51:57,626 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:51:57,630 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:57,631 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:51:57] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:51:59,906 - __main__ - INFO - Starting sync process...
-2024-08-31 22:51:59,906 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:51:59,906 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:51:59,906 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:51:59,907 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:51:59,907 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:51:59,907 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:51:59,907 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:51:59,907 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:51:59,907 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:51:59,908 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:01,802 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "GET /transactions HTTP/1.1" 200 -
-2024-08-31 22:52:01,816 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:01,818 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:01,821 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:01] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:03,680 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "GET /block HTTP/1.1" 200 -
-2024-08-31 22:52:03,695 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:03,697 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:03,699 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:03] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:05,545 - __main__ - INFO - Starting sync process...
-2024-08-31 22:52:05,545 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:52:05,545 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:52:05,545 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:52:05,545 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:05,545 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:52:05,545 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:52:05,546 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:05,546 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:52:05,546 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:52:05,546 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:11,517 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[32mGET /block?blockHeader=000000844aa8aaa1bb04fa5848a29f199621184ab27d678bfb45612863ab0721 HTTP/1.1[0m" 302 -
-2024-08-31 22:52:11,578 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "GET /block/000000844aa8aaa1bb04fa5848a29f199621184ab27d678bfb45612863ab0721 HTTP/1.1" 200 -
-2024-08-31 22:52:11,592 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:11,594 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:11,596 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:11] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:20,965 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:20] "[32mGET /transactions/94368ad5052fa9fa65f21a83acf0e16001968084514947ef1b2189d06fd47ea0 HTTP/1.1[0m" 302 -
-2024-08-31 22:52:20,982 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:20] "GET /tx/94368ad5052fa9fa65f21a83acf0e16001968084514947ef1b2189d06fd47ea0 HTTP/1.1" 200 -
-2024-08-31 22:52:21,026 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:21,030 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:21] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:21,032 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:21] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:28,119 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "GET /mempool HTTP/1.1" 200 -
-2024-08-31 22:52:28,136 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:28,141 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:28,142 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:28] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:29,394 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "GET /transactions HTTP/1.1" 200 -
-2024-08-31 22:52:29,406 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:29,410 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:29,410 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:29] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:30,742 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "GET /block HTTP/1.1" 200 -
-2024-08-31 22:52:30,755 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:30,758 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:30,760 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:30] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:31,400 - __main__ - INFO - Starting sync process...
-2024-08-31 22:52:31,400 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:52:31,400 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:52:31,401 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:52:31,401 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:31,401 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:52:31,401 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:52:31,401 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:31,401 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:52:31,401 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:52:31,401 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:32,834 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[32mGET /block?blockHeader=00007ccc830819406d9102ba53ba9cb7f75b3121a33fe694fa386b2a1d858f95 HTTP/1.1[0m" 302 -
-2024-08-31 22:52:32,854 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "GET /block/00007ccc830819406d9102ba53ba9cb7f75b3121a33fe694fa386b2a1d858f95 HTTP/1.1" 200 -
-2024-08-31 22:52:32,870 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:32,873 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:32,874 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:32] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:36,196 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[32mGET /transactions/9de324f1841d76bfb5ea5da597a515a01b98db5cf634d110c909a3ae036448dc HTTP/1.1[0m" 302 -
-2024-08-31 22:52:36,213 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "GET /tx/9de324f1841d76bfb5ea5da597a515a01b98db5cf634d110c909a3ae036448dc HTTP/1.1" 200 -
-2024-08-31 22:52:36,243 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2024-08-31 22:52:36,246 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:36,250 - werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 22:52:36] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
-2024-08-31 22:52:40,278 - __main__ - INFO - Starting sync process...
-2024-08-31 22:52:40,278 - __main__ - DEBUG - Retrieved port list from NodeDB: [8888, 5555, 3333, 1111]
-2024-08-31 22:52:40,279 - __main__ - INFO - Syncing with node at port 5555
-2024-08-31 22:52:40,279 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 5555, isNewBlockAvailable: True
-2024-08-31 22:52:40,279 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:40,279 - __main__ - INFO - Syncing with node at port 3333
-2024-08-31 22:52:40,279 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 3333, isNewBlockAvailable: True
-2024-08-31 22:52:40,279 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
-2024-08-31 22:52:40,279 - __main__ - INFO - Syncing with node at port 1111
-2024-08-31 22:52:40,279 - Blockchain.Backend.core.network.syncManager - DEBUG - Constructor: syncManager initialized with host: 127.0.0.1, port: 1111, isNewBlockAvailable: True
-2024-08-31 22:52:40,279 - __main__ - ERROR - Error while publishing or Downloading a Blockchain
-[Errno 111] Connection refused
+2024-09-01 16:05:54,939 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:54] "GET /block HTTP/1.1" 200 -
+2024-09-01 16:05:54,950 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-09-01 16:05:54,952 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:54] "[36mGET /static/images/search.png HTTP/1.1[0m" 304 -
+2024-09-01 16:05:54,952 - werkzeug - INFO - 127.0.0.1 - - [01/Sep/2024 16:05:54] "[36mGET /static/images/CODIES_ALERT.png HTTP/1.1[0m" 304 -
+2024-09-01 16:06:02,108 - Blockchain.Backend.core.network.syncManager - INFO - Connection accepted from ('127.0.0.1', 54824)
+2024-09-01 16:06:02,108 - Blockchain.Backend.core.network.connection - DEBUG - connection.py - read(self) will parse NetworkEnvelope
+2024-09-01 16:06:02,108 - Blockchain.Backend.core.network.syncManager - DEBUG - Waiting to accept a connection...
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - INFO - Starting to parse the network envelope...
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - DEBUG - Magic number read: f9beb4d9
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - DEBUG - Command read: b'block'
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - DEBUG - Payload length: 176
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - DEBUG - Checksum read: 866aa588
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - DEBUG - Payload read: de000000a70000000100000077a959c7bf6718c40f349537692581ed4d1786feabb3220407dce20c098000007cbc6ae416b5e3b505ff9c7810bce4cd1b4238ae0bad54da106aa72ab704f8df36e5d46633b81e1e714f06000101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0201deffffffff0100f2052a010000001976a914299e1ac7458604efd0c989203c751c87de1b509688ac00000000
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - DEBUG - Calculated checksum: 866aa588
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - INFO - Parsing completed successfully.
+2024-09-01 16:06:02,109 - Blockchain.Backend.core.network.network - INFO - NetworkEnvelope constructor: Command is b'block'
+2024-09-01 16:06:02,110 - Blockchain.Backend.core.network.syncManager - INFO - New Block Received : 222

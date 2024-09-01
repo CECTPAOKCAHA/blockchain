@@ -3,6 +3,7 @@ from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader
 from Blockchain.Backend.core.network.connection import Node
 from Blockchain.Backend.core.database.database import BlockchainDB, NodeDB
+from Blockchain.Backend.core.Tx import Tx
 from Blockchain.Backend.core.network.network import portlist, requestBlock, NetworkEnvelope, FinishedSending
 from threading import Thread
 import logging
@@ -12,11 +13,12 @@ logger = logging.getLogger(__name__)
 
 class syncManager:
     # def __init__(self, host, port, newBlockAvailable = None, secondryChain = None, Mempool = None):
-    def __init__(self, host, port, newBlockAvailable = None, secondryChain = None):
+    def __init__(self, host, port, newBlockAvailable = None, secondryChain = None, Mempool = None):
         self.host = host
         self.port = port 
         self.newBlockAvailable = newBlockAvailable
         self.secondryChain = secondryChain
+        self.Mempool = Mempool
         if newBlockAvailable != None:
             isNewBlockAvailable = False
         else:
@@ -44,6 +46,11 @@ class syncManager:
         try:          
             if len(str(self.addr[1])) == 4:
                 self.addNode()
+
+            if envelope.command == b'Tx':
+                Transaction = Tx.parse(envelope.stream())
+                Transaction.TxId = Transaction.id()
+                self.Mempool[Transaction.TxId] = Transaction
 
             if envelope.command == b'block':
                 blockObj = Block.parse(envelope.stream())
@@ -156,6 +163,9 @@ class syncManager:
     def publishBlock(self, localport, port, block):
         self.connectToHost(localport, port)
         self.connect.send(block)
+
+    def publishTx(self, Tx):
+        self.connect.send(Tx)
         
     def startDownload(self, localport, port, bindPort):
         try:
