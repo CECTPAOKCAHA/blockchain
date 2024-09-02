@@ -87,10 +87,10 @@ class Blockchain:
                             sync.startDownload(localHostPort -1, port, True)                    
                             logger.info(f"Sync with node at port {port} completed successfully")
                     except Exception as err:
-                        logger.error(f'Error while publishing or Downloading a Blockchain\n{err}')
+                        pass
 
         except Exception as e:
-            logger.error(f"Error while downloading the Blockchain (startSync): {e}", exc_info=True)
+            pass
 
     """Keep track of all the unspent transactions in cache memory for fast retrieval"""
 
@@ -356,7 +356,9 @@ class Blockchain:
                             self.addTransactionsInBlock
                             )
             blockheader.to_bytes()
-            self.BroadcastBlock(newBlock)
+            block = copy.deepcopy(newBlock)            
+            broadcastNewBlock = Process(target = self.BroadcastBlock, args = (block, ))
+            broadcastNewBlock.start()
             blockheader.to_hex()
             time.sleep(5) # Add a 5-second delay here
             self.remove_spent_Transactions()

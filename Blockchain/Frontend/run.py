@@ -1,4 +1,5 @@
 """ from crypt import methods """
+from multiprocessing import Process
 from flask import Flask, render_template, request, redirect, url_for
 from Blockchain.client.sendBTC import SendBTC 
 from Blockchain.Backend.core.Tx import Tx
@@ -220,7 +221,8 @@ def wallet():
 
             if verified:
                 MEMPOOL[TxObj.TxId] = TxObj
-                broadcastTx(TxObj)
+                relayTx = Process(target = broadcastTx, args = (TxObj, localHostPort))
+                relayTx.start()
                 message = "Transaction added in memory pool"                                       
 
     return render_template('wallet.html', message = message)
@@ -238,7 +240,7 @@ def broadcastTx(TxObj, localHostPort = None):
                     sync.publishTx(TxObj)
                 
                 except Exception as err:
-                    logger.error(f'Error while publishing or Downloading a Blockchain\n{err}')
+                    pass
                 
     except Exception as err:
         pass
