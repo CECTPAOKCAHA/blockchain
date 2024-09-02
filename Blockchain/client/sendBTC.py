@@ -1,3 +1,4 @@
+import random
 import time
 from Blockchain.Backend.core.Tx import TxIn, TxOut, Tx
 from Blockchain.Backend.util.util import decode_base58
@@ -21,7 +22,7 @@ class SendBTC:
     def getPrivateKey(self):
         AllAccounts = AccountDB().read()
         for account in AllAccounts:
-            if account['publicAddress'] == self.FromPublicAddress:
+            if account['PublicAddress'] == self.FromPublicAddress:
                 return account['privateKey']
 
     def prepareTxIn(self):
@@ -42,18 +43,19 @@ class SendBTC:
         except Exception as e:
             print(f"Error in converting the Managed Dict to Normal Dict")
 
-        for Txbyte in newutxos:
-            if self.Total < self.Amount:
-                txObj = newutxos[Txbyte]
+        for index, Txbyte in enumerate(newutxos):
+            if index > random.randint(1, 30):
+                if self.Total < self.Amount:
+                    txObj = newutxos[Txbyte]
 
-                for index, txout in enumerate(txObj.tx_outs):
-                    if txout.script_pubkey.cmds[2] == self.fromPubKeyHash:
-                        self.Total += txout.amount
-                        prev_tx = bytes.fromhex(Txbyte)
-                        TxIns.append(TxIn(prev_tx, index))
+                    for index, txout in enumerate(txObj.tx_outs):
+                        if txout.script_pubkey.cmds[2] == self.fromPubKeyHash:
+                            self.Total += txout.amount
+                            prev_tx = bytes.fromhex(Txbyte)
+                            TxIns.append(TxIn(prev_tx, index))
 
-            else:
-                break
+                else:
+                    break
 
         self.isBalanceEnough = True
 

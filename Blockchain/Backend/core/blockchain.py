@@ -14,6 +14,7 @@ from Blockchain.Backend.util.util import merkle_root
 from multiprocessing import Process, Manager
 from Blockchain.Frontend.run import main
 from Blockchain.Backend.core.network.syncManager import syncManager
+from Blockchain.client.autoBroadcastTX import autoBroadcast
 import time
 
 ZERO_HASH = '0' * 64
@@ -110,15 +111,12 @@ class Blockchain:
                     self.utxos[txId_index[0].hex()] = prev_trans.tx_outs.pop(txId_index[1])
                     
     """ Check if it is a double spending Attempt """
-    """
     def doubleSpendingAttempt(self, tx):
         for txin in tx.tx_ins:
             if txin.prev_tx not in self.prevTxs and txin.prev_tx.hex() in self.utxos:
                 self.prevTxs.append(txin.prev_tx)
             else:
                 return True
-    """
-
 
     """Read Transactions from Memory Pool"""
     def read_transaction_from_memorypool(self):
@@ -126,15 +124,28 @@ class Blockchain:
         self.TxIds = []
         self.addTransactionsInBlock = []
         self.remove_spent_transactions = []
+        self.prevTxs = []
+        deleteTxs = []
 
-        for tx in self.MemPool:
-            self.MemPool[tx].TxId = tx
-            self.TxIds.append(bytes.fromhex(tx))
-            self.addTransactionsInBlock.append(self.MemPool[tx])
-            self.Blocksize += len(self.MemPool[tx].serialize())
+        tempMemPool = dict(self.MemPool)
 
-            for spent in self.MemPool[tx].tx_ins:
-                self.remove_spent_transactions.append([spent.prev_tx, spent.prev_index])
+        if self.Blocksize < 1000000:
+            for tx in tempMemPool:
+                if not self.doubleSpendingAttempt(tempMemPool[tx]):
+                    tempMemPool[tx].TxId = tx
+                    self.TxIds.append(bytes.fromhex(tx))
+                    self.addTransactionsInBlock.append(tempMemPool[tx])
+                    self.Blocksize += len(tempMemPool[tx].serialize())
+
+                    for spent in tempMemPool[tx].tx_ins:
+                        self.remove_spent_transactions.append([spent.prev_tx, spent.prev_index])
+                
+                else:
+                    deleteTxs.append(tx)
+
+        for txId in deleteTxs:
+            del self.MemPool[txId]
+
 
 
     """ Remove Transactions from Memory pool """
@@ -242,10 +253,10 @@ class Blockchain:
                     self.utxos[tx.id()] = tx.serialize()
                     block.Txs[idx].TxId = tx.id()
 
-                    """ Remove Spent Transactions 
+                    """ Remove Spent Transactions """
                     for txin in tx.tx_ins:
                         if txin.prev_tx.hex() in self.utxos:
-                            del self.utxos[txin.prev_tx.hex()]"""
+                            del self.utxos[txin.prev_tx.hex()]
 
                     if tx.id() in self.MemPool:
                         del self.MemPool[tx.id()]
@@ -293,6 +304,12 @@ class Blockchain:
 
                             for index, tx in enumerate(validBlock.Txs):
                                 validBlock.Txs[index].TxId = tx.id()
+                                self.utxos[tx.id()] = tx
+
+                                """ Remove Spent Transactions """
+                                for txin in tx.tx_ins:
+                                    if txin.prev_tx.hex() in self.utxos:
+                                        del self.utxos[txin.prev_tx.hex()]                                
 
                                 if tx.tx_ins[0].prev_tx.hex() != "0000000000000000000000000000000000000000000000000000000000000000":
                                     validTxs[validBlock.Txs[index].TxId] = tx
@@ -374,6 +391,7 @@ if __name__ == "__main__":
         config.read('config.ini')
         localHost = config['DEFAULT']['host']
         localHostPort = int(config['MINER']['port'])
+        simulateBTC = bool(config['MINER']['simulateBTC'])
         webport = int(config['Webhost']['port'])
 
         logger.info(f"Configuration loaded. Local Host: {localHost}, Local Host Port: {localHostPort}, Web Port: {webport}")
@@ -396,9 +414,15 @@ if __name__ == "__main__":
 
 
             blockchain = Blockchain(utxos, MemPool, newBlockAvailable, secondryChain)
-            blockchain.settargetWhileBooting()
+            
             blockchain.startSync()
             blockchain.buildUTXOS()
+
+            if simulateBTC:
+                autoBroadcastTxs = Process(target = autoBroadcast)
+                autoBroadcastTxs.start()            
+
+            blockchain.settargetWhileBooting()
             blockchain.main()
     except Exception as e:
         logger.error(f"Exception in main execution block: {e}", exc_info=True)
